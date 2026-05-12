@@ -8,12 +8,12 @@
 
   // Animated headline cycling
   const cyclingPhrases = [
-    'Premium harvests.',
-    'AI automation.',
+    'Precision sensors.',
+    'AI monitoring.',
     'Exclusive species.',
     'Zero waste farming.',
     'Intelligent growth.',
-    'Future food systems.',
+    'Real-time data.',
   ];
   let phraseIndex = 0;
   let currentPhrase = cyclingPhrases[0];
@@ -41,7 +41,7 @@
     { icon: '◈', title: 'Dissolved Oxygen', body: 'Real-time DO sensors ensure peak saturation across all tanks. Alerts fire in seconds, not hours.' },
     { icon: '◉', title: 'Nutrient Mapping', body: 'EC and ORP sensors track nutrient density across every grow bed. AI schedules feeding for maximum plant uptake.' },
     { icon: '⬟', title: 'Climate Control', body: 'Temperature, humidity and light sensors across the facility. Every variable logged, every anomaly flagged instantly.' },
-    { icon: '◈', title: 'Computer Vision', body: 'Camera arrays will detect plant stress, fish behaviour anomalies, and pest incursions automatically.' },
+    { icon: '◈', title: 'Computer Vision', body: 'Camera arrays detect plant stress, fish behaviour anomalies, and pest incursions automatically.' },
     { icon: '⬡', title: 'Predictive Models', body: 'AI forecasts harvest windows, equipment failure probabilities, and yield potential weeks in advance.' },
   ];
 
@@ -51,26 +51,14 @@
     { cat: 'Breeding Programs', color: '#7f1d1d', items: ['6 active cross-pollination experiments', 'Genomic logging per generation', 'Proprietary cultivar development', 'Species habitat engineering'] },
   ];
 
-  const tiers = [
-    { name: 'Seed', amount: '$500', highlight: false, perks: ['Quarterly impact reports', 'Annual harvest package', 'Digital farm feed access', 'Stewardship certificate'] },
-    { name: 'Growth', amount: '$2,500', highlight: true, perks: ['All Seed benefits', 'Annual site visit', 'Revenue share from Year 2', 'Priority harvest allocation', 'Investor calls'] },
-    { name: 'Partner', amount: '$10,000', highlight: false, perks: ['All Growth benefits', 'Advisory board seat', 'Species naming rights', 'Full financial access', 'Co-branding rights'] },
-  ];
-
+  // Use your real photos — add more as you upload them to static/images/
   const gallery = [
-    { src: 'https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?auto=format&fit=crop&w=800&q=80', cap: 'Main aquaponics system — Tank Row A' },
-    { src: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80', cap: 'Fish habitat monitoring' },
-    { src: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=80', cap: 'Grow bed production — Week 6' },
-    { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80', cap: 'Sensor array & control hub' },
-    { src: null, cap: 'Dragon fruit cultivation — Coming soon' },
-    { src: null, cap: 'Harvest day — Coming soon' },
-  ];
-
-  const whyItems = [
-    { title: 'Real Production', body: 'Not a concept — an operating farm with measurable output and expanding capacity.' },
-    { title: 'Technology Moat', body: 'Custom AI stack built in-house. Proprietary cultivar programs. Vertical integration.' },
-    { title: 'Global Market', body: 'Positioned for MENA, Asia, and Africa where sustainable food demand accelerates fastest.' },
-    { title: 'Full Transparency', body: 'Growth-tier and above investors receive complete financial access. No hidden metrics.' },
+    { src: '/images/aquaponics/tank1.jpeg',  cap: 'Main aquaponics system — Tank Row A' },
+    { src: '/images/aquaponics/tank2.jpg',  cap: 'Fish Tanks - Second Generation' },
+    { src: '/images/sensors/chip.jpeg', cap: 'Water chemistry monitoring point' },
+    { src: '/images/plants/fig-fruit.jpg',  cap: 'Fig fruit — exotic variety program' },
+    { src: '/images/aquaponics/firstgen.jpeg', cap: 'First Generation Of Aquaponics' },
+    { src: null, cap: 'Sensor array — add photo to static/images/sensors/' },
   ];
 
   onMount(() => {
@@ -129,7 +117,7 @@
       {#each navLinks as l}<li><a href={l.href}>{l.label}</a></li>{/each}
     </ul>
     <div class="nav-right">
-      <a href="#invest" class="btn-nav">Invest Now</a>
+      <a href="#contact" class="btn-nav">Contact Us</a>
       <button class="hamburger" class:open={menuOpen} on:click={toggleMenu} aria-label="Toggle menu">
         <span /><span /><span />
       </button>
@@ -137,7 +125,7 @@
   </nav>
   <div class="mobile-menu" class:open={menuOpen}>
     {#each navLinks as l}<a href={l.href} on:click={closeMenu}>{l.label}</a>{/each}
-    <a href="#invest" class="m-cta" on:click={closeMenu}>Invest Now →</a>
+    <a href="#contact" class="m-cta" on:click={closeMenu}>Contact Us →</a>
   </div>
 </header>
 
@@ -154,7 +142,7 @@
       <p class="hero-sub">The operating aquaponics farm fusing biological precision with AI-driven monitoring — premium food, zero waste, full traceability.</p>
       <div class="hero-btns">
         <a href="#aquaponics" class="btn-pill-dark">Explore our system</a>
-        <a href="#invest" class="btn-pill-outline">Invest now</a>
+        <a href="#automation" class="btn-pill-outline">See our tech →</a>
       </div>
       <div class="trust-row">
         <span class="trust-badge">✓ Operational farm</span>
@@ -164,10 +152,10 @@
     </div>
     <div class="hero-right">
       <div class="hero-img-wrap">
-        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?auto=format&fit=crop&w=800&q=85" alt="Aquaponics system" class="img-main-hero" />
-        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=400&q=80" alt="Plants" class="img-float-hero" />
+        <img src="/images/hero/main.jpg" alt="Aquaponics system" class="img-main-hero" />
+        <img src="/images/plants/fig-fruit.jpg" alt="Plants" class="img-float-hero" />
         <div class="hcard hcard-1"><span class="hc-val">24/7</span><span class="hc-lbl">AI Monitoring</span></div>
-        <div class="hcard hcard-2"><span class="hc-val">95%</span><span class="hc-lbl">Water recycled</span></div>
+        <div class="hcard hcard-2"><span class="hc-val">100%</span><span class="hc-lbl">Water recycled</span></div>
       </div>
     </div>
   </div>
@@ -214,7 +202,7 @@
           <li>IBC tank infrastructure — modular, HDPE-grade, fully scalable</li>
           <li>Multi-stage grow beds with timed flood-and-drain cycles</li>
           <li>Real-time water chemistry across all tanks</li>
-          <li>Closed-loop recycling — 95% less water than soil farming</li>
+          <li>Closed-loop recycling — 100% less water than soil farming</li>
           <li>Zero pesticides. Zero synthetic fertilisers. Full traceability.</li>
         </ul>
         <a href="#invest" class="btn-primary" style="margin-top:1.5rem">Join Our Round</a>
@@ -325,49 +313,14 @@
   </div>
 </section>
 
-<!-- INVEST -->
-<section id="invest" class="section bg-navy" data-reveal="inv">
+<!-- CONTACT -->
+<section id="contact" class="final-cta">
   <div class="container">
-    <div class="sec-hdr" class:vis={visible['inv']}>
-      <div class="stag light">05 — Crowdfunding</div>
-      <h2 class="light">Invest in the <em>future of food.</em></h2>
-      <p class="sub light">An operating farm, a proven system, and a technology stack years ahead of conventional agriculture. We are opening a limited community investment round.</p>
-    </div>
-    <div class="pb-wrap" class:vis={visible['inv']}>
-      <div class="pb-meta"><span><strong>$42,000</strong> raised of $200,000 goal</span><span>38 investors · Round closes Dec 2025</span></div>
-      <div class="pb-track"><div class="pb-fill" /></div>
-      <div class="pb-pct">21% funded</div>
-    </div>
-    <div class="tiers" class:vis={visible['inv']}>
-      {#each tiers as t, i}
-        <div class="tier" class:featured={t.highlight} style="transition-delay:{i*0.1}s">
-          {#if t.highlight}<div class="tier-tag">Most Popular</div>{/if}
-          <div class="tier-name">{t.name}</div>
-          <div class="tier-price">{t.amount}</div>
-          <div class="tier-period">minimum investment</div>
-          <ul class="tier-perks">{#each t.perks as p}<li>{p}</li>{/each}</ul>
-          <a href="mailto:invest@sgga.ai?subject=Investment — {t.name}" class="btn-tier" class:featured={t.highlight}>Apply for {t.name}</a>
-        </div>
-      {/each}
-    </div>
-    <div class="why-grid" class:vis={visible['inv']}>
-      {#each whyItems as w, i}
-        <div class="why-item" style="transition-delay:{i*0.08}s">
-          <h4>{w.title}</h4><p>{w.body}</p>
-        </div>
-      {/each}
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <div class="container">
-    <h2>Ready to grow with us?</h2>
-    <p>Request a full investor deck, schedule a farm visit, or start a partnership discussion.</p>
+    <h2>Interested in our technology?</h2>
+    <p>We are open to collaboration, research partnerships, and technology discussions. Reach out to learn more about our AI-driven aquaponics system.</p>
     <div class="cta-row">
-      <a href="mailto:invest@sgga.ai" class="btn-primary btn-lg">Request Investor Deck</a>
-      <a href="mailto:hello@sgga.ai" class="btn-outline">General Enquiry</a>
+      <a href="mailto:hello@sgga.ai" class="btn-primary btn-lg">Get in Touch</a>
+      <a href="#aquaponics" class="btn-outline">Explore the System</a>
     </div>
   </div>
 </section>
@@ -379,11 +332,11 @@
       <div class="footer-brand">SGGA<span>·AI</span></div>
       <p>Sustainable Green Gold AI<br />Chiang Rai, Thailand</p>
     </div>
-    <div class="footer-col"><h5>Navigate</h5>{#each navLinks as l}<a href={l.href}>{l.label}</a>{/each}<a href="#invest">Invest</a></div>
-    <div class="footer-col"><h5>Contact</h5><a href="mailto:invest@sgga.ai">invest@sgga.ai</a><a href="mailto:hello@sgga.ai">hello@sgga.ai</a></div>
+    <div class="footer-col"><h5>Navigate</h5>{#each navLinks as l}<a href={l.href}>{l.label}</a>{/each}<a href="#contact">Contact</a></div>
+    <div class="footer-col"><h5>Contact</h5><a href="mailto:hello@sgga.ai">hello@sgga.ai</a></div>
     <div class="footer-note">
       <p>© 2025 Sustainable Green Gold AI. All rights reserved.</p>
-      <p>Investment involves risk. Past performance does not guarantee future results.</p>
+      <p>Chiang Rai, Thailand</p>
     </div>
   </div>
 </footer>
