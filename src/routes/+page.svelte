@@ -377,6 +377,13 @@
       <a href="https://line.me/ti/p/carbonbasedlife" class="btn-primary btn-lg" target="_blank">Contact us on Line</a>
       <a href="#aquaponics" class="btn-outline">Explore the System</a>
     </div>
+
+      <div class="media-cta" class:vis={visible["med"]}>
+<a href="/Smart_Polyponics.pdf" target="_blank" class="btn-view-presentation">
+          View Full Presentation
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -647,4 +654,12 @@
     .gallery { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
   }
+
+  /* ── MEDIA CTA ── */
+  .media-cta { display: flex; justify-content: center; margin-top: 2.5rem; opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s; }
+  .media-cta.vis { opacity: 1; transform: none; }
+  .btn-view-presentation { display: inline-flex; align-items: center; gap: 0.6rem; background: #630c7e; color: #fff; padding: 0.9rem 2rem; border-radius: 8px; font-size: 0.93rem; font-weight: 700; text-decoration: none; border: 2px solid transparent; transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(5,13,30,0.15); }
+  .btn-view-presentation:hover { background: #111827; border-color: #ff5c2a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(5,13,30,0.2); }
+  .btn-view-presentation svg { flex-shrink: 0; }
+
 </style>

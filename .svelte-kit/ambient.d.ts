@@ -50,6 +50,7 @@ declare module '$env/static/private' {
 	export const XPC_FLAGS: string;
 	export const NVM_INC: string;
 	export const TERM_PROGRAM_VERSION: string;
+	export const TERM_FEATURES: string;
 	export const FPATH: string;
 	export const NODE: string;
 	export const __CFBundleIdentifier: string;
@@ -70,6 +71,7 @@ declare module '$env/static/private' {
 	export const COMMAND_MODE: string;
 	export const ITERM_SESSION_ID: string;
 	export const HOME: string;
+	export const LANG: string;
 	export const LS_COLORS: string;
 	export const npm_package_version: string;
 	export const STARSHIP_SHELL: string;
@@ -101,7 +103,6 @@ declare module '$env/static/private' {
 	export const npm_config_user_agent: string;
 	export const TERMINFO_DIRS: string;
 	export const npm_execpath: string;
-	export const LC_CTYPE: string;
 	export const npm_package_json: string;
 	export const XDG_DATA_DIRS: string;
 	export const npm_config_noproxy: string;
@@ -212,6 +213,7 @@ declare module '$env/dynamic/private' {
 		XPC_FLAGS: string;
 		NVM_INC: string;
 		TERM_PROGRAM_VERSION: string;
+		TERM_FEATURES: string;
 		FPATH: string;
 		NODE: string;
 		__CFBundleIdentifier: string;
@@ -232,6 +234,7 @@ declare module '$env/dynamic/private' {
 		COMMAND_MODE: string;
 		ITERM_SESSION_ID: string;
 		HOME: string;
+		LANG: string;
 		LS_COLORS: string;
 		npm_package_version: string;
 		STARSHIP_SHELL: string;
@@ -263,7 +266,6 @@ declare module '$env/dynamic/private' {
 		npm_config_user_agent: string;
 		TERMINFO_DIRS: string;
 		npm_execpath: string;
-		LC_CTYPE: string;
 		npm_package_json: string;
 		XDG_DATA_DIRS: string;
 		npm_config_noproxy: string;
