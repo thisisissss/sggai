@@ -34,7 +34,7 @@
   $: stats = [
     { value: 6,   suffix: "",  label: t.stats[0].label },
     { value: 12,  suffix: "+", label: t.stats[1].label },
-    { value: 95,  suffix: "%", label: t.stats[2].label },
+    { value: 100,  suffix: "%*", label: t.stats[2].label },
     { value: 340, suffix: "%", label: t.stats[3].label },
   ];
 
@@ -152,7 +152,7 @@
         <img src="{R2}/aquaponics/my-system1.jpg" alt="Aquaponics system" class="img-main-hero" />
         <img src="{R2}/plants/fig-fruit.jpg" alt="Plants" class="img-float-hero" />
         <div class="hcard hcard-1"><span class="hc-val">24/7</span><span class="hc-lbl">AI Monitoring</span></div>
-        <div class="hcard hcard-2"><span class="hc-val">95%</span><span class="hc-lbl">Water recycled</span></div>
+        <div class="hcard hcard-2"><span class="hc-val">100%</span><span class="hc-lbl">Water recycled</span></div>
       </div>
     </div>
   </div>
@@ -182,7 +182,8 @@
           <p>{s.label}</p>
         </div>
       {/each}
-    </div>
+</div>
+    <p class="stats-note">* Excludes natural evaporation — atmospheric water recovery system in development</p>
   </div>
 </section>
 
@@ -609,4 +610,6 @@
   .lang-toggle { background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4); backdrop-filter: blur(8px); padding: 0.45rem 0.9rem; border-radius: 100px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
   header.scrolled .lang-toggle { background: #f3f4f6; color: #374151; border-color: #e5e7eb; }
   .lang-toggle:hover { background: rgba(255,255,255,0.25); }
+
+  .stats-note { color: rgba(255,255,255,0.3); font-size: 0.72rem; text-align: center; margin-top: 1.5rem; }
 </style>
