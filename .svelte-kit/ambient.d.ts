@@ -66,6 +66,7 @@ declare module '$env/static/private' {
 	export const NIX_PROFILES: string;
 	export const LOGNAME: string;
 	export const npm_config_init_module: string;
+	export const LaunchInstanceID: string;
 	export const __NIX_DARWIN_SET_ENVIRONMENT_DONE: string;
 	export const _: string;
 	export const COMMAND_MODE: string;
@@ -74,6 +75,7 @@ declare module '$env/static/private' {
 	export const LANG: string;
 	export const LS_COLORS: string;
 	export const npm_package_version: string;
+	export const SECURITYSESSIONID: string;
 	export const STARSHIP_SHELL: string;
 	export const NIX_SSL_CERT_FILE: string;
 	export const TMPDIR: string;
@@ -229,6 +231,7 @@ declare module '$env/dynamic/private' {
 		NIX_PROFILES: string;
 		LOGNAME: string;
 		npm_config_init_module: string;
+		LaunchInstanceID: string;
 		__NIX_DARWIN_SET_ENVIRONMENT_DONE: string;
 		_: string;
 		COMMAND_MODE: string;
@@ -237,6 +240,7 @@ declare module '$env/dynamic/private' {
 		LANG: string;
 		LS_COLORS: string;
 		npm_package_version: string;
+		SECURITYSESSIONID: string;
 		STARSHIP_SHELL: string;
 		NIX_SSL_CERT_FILE: string;
 		TMPDIR: string;

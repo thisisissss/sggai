@@ -1,91 +1,60 @@
 <script>
+  import { translations } from '$lib/i18n.js';
   import { onMount } from "svelte";
 
   const R2 = "https://media.sustainablegreengold.com";
+
+  let lang = 'en';
+  $: t = translations[lang];
+
+  function toggleLang() {
+    lang = lang === 'en' ? 'th' : 'en';
+  }
 
   let menuOpen = false;
   let scrolled = false;
   let visible = {};
   let statsTriggered = false;
 
-  const cyclingPhrases = [
-    "Precision sensors.",
-    "AI monitoring.",
-    "Exclusive species.",
-    "Zero waste farming.",
-    "Intelligent growth.",
-    "Real-time data.",
-  ];
   let phraseIndex = 0;
-  let currentPhrase = cyclingPhrases[0];
+  $: cyclingPhrases = t.hero.cycling;
+  $: currentPhrase = cyclingPhrases[phraseIndex];
   let phraseVisible = true;
 
   function toggleMenu() { menuOpen = !menuOpen; }
   function closeMenu() { menuOpen = false; }
 
-  const navLinks = [
-    { label: "Ecosystem", href: "#aquaponics" },
-    { label: "Automation", href: "#automation" },
-    { label: "Species", href: "#species" },
-    { label: "Media", href: "#media" },
+  $: navLinks = [
+    { label: t.nav.ecosystem, href: "#aquaponics" },
+    { label: t.nav.automation, href: "#automation" },
+    { label: t.nav.species, href: "#species" },
+    { label: t.nav.media, href: "#media" },
   ];
 
-  const stats = [
-    { value: 6,   suffix: "",  label: "Active Fish Tanks" },
-    { value: 12,  suffix: "+", label: "Plant Varieties" },
-    { value: 95,  suffix: "%", label: "Water Recycled" },
-    { value: 340, suffix: "%", label: "Projected Yield Growth" },
+  $: stats = [
+    { value: 6,   suffix: "",  label: t.stats[0].label },
+    { value: 12,  suffix: "+", label: t.stats[1].label },
+    { value: 95,  suffix: "%", label: t.stats[2].label },
+    { value: 340, suffix: "%", label: t.stats[3].label },
   ];
 
-  const automationCards = [
-    { icon: "⬡", title: "pH Precision",      body: "Proprietary probes measure water chemistry 24/7. Automated dosing corrects drift before fish or plants are affected." },
-    { icon: "◈", title: "Dissolved Oxygen",  body: "Real-time DO sensors ensure peak saturation across all tanks. Alerts fire in seconds, not hours." },
-    { icon: "◉", title: "Nutrient Mapping",  body: "EC and ORP sensors track nutrient density across every grow bed. AI schedules feeding for maximum plant uptake." },
-    { icon: "⬟", title: "Climate Control",   body: "Temperature, humidity and light sensors across the facility. Every variable logged, every anomaly flagged instantly." },
-    { icon: "◈", title: "Computer Vision",   body: "Camera arrays detect plant stress, fish behaviour anomalies, and pest incursions automatically." },
-    { icon: "⬡", title: "Predictive Models", body: "AI forecasts harvest windows, equipment failure probabilities, and yield potential weeks in advance." },
+  const cardIcons = ["⬡", "◈", "◉", "⬟", "◈", "⬡"];
+  $: automationCards = t.auto.cards.map((c, i) => ({ ...c, icon: cardIcons[i] }));
+
+  const speciesColors = ["#0a3d62", "#1e5631", "#7f1d1d"];
+  $: speciesItems = t.sp.items.map((s, i) => ({ ...s, color: speciesColors[i] }));
+
+  $: gallery = [
+    { src: `${R2}/aquaponics/tank1.jpeg`,     cap: t.med.gallery[0] },
+    { src: `${R2}/aquaponics/tank2.jpg`,      cap: t.med.gallery[1] },
+    { src: `${R2}/sensors/chip.jpeg`,         cap: t.med.gallery[2] },
+    { src: `${R2}/plants/fig-fruit.jpg`,      cap: t.med.gallery[3] },
+    { src: `${R2}/aquaponics/firstgen.jpeg`,  cap: t.med.gallery[4] },
+    { src: `${R2}/aquaponics/my-system2.jpg`, cap: t.med.gallery[5] },
   ];
 
-  const speciesItems = [
-    {
-      cat: "Organic Fish",
-      color: "#0a3d62",
-      items: [
-        "Koi — ornamental & edible hybrid lines",
-        "Tilapia — selective strain program",
-        "Pangasius — controlled breeding",
-      ],
-    },
-    {
-      cat: "Exclusive Plants",
-      color: "#1e5631",
-      items: [
-        "Dragon Fruit — rare pitaya cultivars",
-        "Heritage grape varieties",
-        "Rare chilli lineages (heat-mapped)",
-        "Cross-pollinated herb blends",
-      ],
-    },
-    {
-      cat: "Breeding Programs",
-      color: "#7f1d1d",
-      items: [
-        "6 active cross-pollination experiments",
-        "Genomic logging per generation",
-        "Proprietary cultivar development",
-        "Species habitat engineering",
-      ],
-    },
-  ];
-
-  const gallery = [
-    { src: `${R2}/aquaponics/tank1.jpeg`,    cap: "Main aquaponics system — Tank Row A" },
-    { src: `${R2}/aquaponics/tank2.jpg`,     cap: "Fish Tanks — Second Generation" },
-    { src: `${R2}/sensors/chip.jpeg`,        cap: "Water chemistry monitoring point" },
-    { src: `${R2}/plants/fig-fruit.jpg`,     cap: "Fig fruit — exotic variety program" },
-    { src: `${R2}/aquaponics/firstgen.jpeg`, cap: "First Generation Of Aquaponics" },
-    { src: `${R2}/aquaponics/my-system2.jpg`, cap: "IBC tank array — closed-loop aquaponics system" },
-  ];
+  const timelineStates = ["done", "active", "", ""];
+  $: timeline = t.auto.timeline.map((tl, i) => ({ ...tl, state: timelineStates[i] }));
 
   onMount(() => {
     const onScroll = () => { scrolled = window.scrollY > 40; };
@@ -142,7 +111,10 @@
       {#each navLinks as l}<li><a href={l.href}>{l.label}</a></li>{/each}
     </ul>
     <div class="nav-right">
-      <a href="#contact" class="btn-nav">Contact Us</a>
+      <button class="lang-toggle" on:click={toggleLang}>
+        {lang === 'en' ? '🇹🇭 ภาษาไทย' : '🇬🇧 English'}
+      </button>
+      <a href="#contact" class="btn-nav">{t.nav.contact}</a>
       <button class="hamburger" class:open={menuOpen} on:click={toggleMenu} aria-label="Toggle menu">
         <span /><span /><span />
       </button>
@@ -150,7 +122,7 @@
   </nav>
   <div class="mobile-menu" class:open={menuOpen}>
     {#each navLinks as l}<a href={l.href} on:click={closeMenu}>{l.label}</a>{/each}
-    <a href="#contact" class="m-cta" on:click={closeMenu}>Contact Us →</a>
+    <a href="#contact" class="m-cta" on:click={closeMenu}>{t.nav.contact} →</a>
   </div>
 </header>
 
@@ -158,24 +130,21 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-badge"><span class="bdot" /> Operational · Chiang Rai, Thailand</div>
+      <div class="hero-badge"><span class="bdot" /> {t.hero.badge}</div>
       <h1>
-        <span class="h1-static">One ecosystem.</span><br />
-        <span class="h1-static">All yields. AI-powered.</span><br />
+        <span class="h1-static">{t.hero.h1_1}</span><br />
+        <span class="h1-static">{t.hero.h1_2}</span><br />
         <span class="h1-animated" class:out={!phraseVisible}>{currentPhrase}</span>
       </h1>
-      <p class="hero-sub">
-        The operating aquaponics farm fusing biological precision with AI-driven
-        monitoring — premium food, zero waste, full traceability.
-      </p>
+      <p class="hero-sub">{t.hero.sub}</p>
       <div class="hero-btns">
-        <a href="#aquaponics" class="btn-pill-dark">Explore our system</a>
-        <a href="#automation" class="btn-pill-outline">See our tech →</a>
+        <a href="#aquaponics" class="btn-pill-dark">{t.hero.btn1}</a>
+        <a href="#automation" class="btn-pill-outline">{t.hero.btn2}</a>
       </div>
       <div class="trust-row">
-        <span class="trust-badge">✓ Operational farm</span>
-        <span class="trust-badge">✓ AI monitoring active</span>
-        <span class="trust-badge">✓ Zero pesticides</span>
+        <span class="trust-badge">{t.hero.trust1}</span>
+        <span class="trust-badge">{t.hero.trust2}</span>
+        <span class="trust-badge">{t.hero.trust3}</span>
       </div>
     </div>
     <div class="hero-right">
@@ -226,21 +195,13 @@
         <img class="img-float" src="{R2}/aquaponics/growbed2.jpg" alt="Detail" />
       </div>
       <div class="split-text">
-        <div class="stag">01 — Ecosystem</div>
-        <h2>A living system,<br /><em>already producing.</em></h2>
-        <p>
-          Our aquaponics facility is not a concept — it is an operational farm
-          generating real harvests today. Fish waste feeds plants. Plants purify
-          water. Sensors monitor every variable, every hour.
-        </p>
+        <div class="stag">{t.aq.tag}</div>
+        <h2>{t.aq.h2_1}<br /><em>{t.aq.h2_2}</em></h2>
+        <p>{t.aq.p}</p>
         <ul class="cklist">
-          <li>IBC tank infrastructure — modular, HDPE-grade, fully scalable</li>
-          <li>Multi-stage grow beds with timed flood-and-drain cycles</li>
-          <li>Real-time water chemistry across all tanks</li>
-          <li>Closed-loop recycling — uses 95% less water than soil farming</li>
-          <li>Zero pesticides. Zero synthetic fertilisers. Full traceability.</li>
+          {#each t.aq.items as item}<li>{item}</li>{/each}
         </ul>
-        <a href="#contact" class="btn-primary" style="margin-top:1.5rem">Get in Touch</a>
+        <a href="#contact" class="btn-primary" style="margin-top:1.5rem">{t.aq.btn}</a>
       </div>
     </div>
   </div>
@@ -250,18 +211,14 @@
 <section id="automation" class="section bg-navy" data-reveal="auto">
   <div class="container">
     <div class="sec-hdr" class:vis={visible["auto"]}>
-      <div class="stag light">02 — Intelligence</div>
-      <h2 class="light">The AI layer <em>is coming.</em></h2>
-      <p class="sub light">
-        We are installing an end-to-end sensor network across every tank and
-        grow bed. Every variable measured. Every pattern learned. Every decision
-        data-driven.
-      </p>
+      <div class="stag light">{t.auto.tag}</div>
+      <h2 class="light">{t.auto.h2_1} <em>{t.auto.h2_2}</em></h2>
+      <p class="sub light">{t.auto.sub}</p>
     </div>
     <div class="tech-banner" class:vis={visible["auto"]}>
       <img src="{R2}/sensors/ssgai.jpg" alt="Sensors" />
       <div class="tb-overlay">
-        <p>Proprietary sensor network · Edge computing clusters · Custom AI pipelines</p>
+        <p>{t.auto.banner}</p>
       </div>
     </div>
     <div class="cards-grid" class:vis={visible["auto"]}>
@@ -274,12 +231,7 @@
       {/each}
     </div>
     <div class="timeline" class:vis={visible["auto"]}>
-      {#each [
-        { label: "Phase 1 — Complete",     desc: "pH, DO, EC, ORP sensors live. HTTP sensor server. iOS monitoring app deployed.", state: "done" },
-        { label: "Phase 2 — In Progress",  desc: "Full tank coverage. Automated dosing pumps. Alert thresholds and push notifications.", state: "active" },
-        { label: "Phase 3 — Planned",      desc: "Computer vision arrays. Predictive ML models. Analytics dashboard with live data.", state: "" },
-        { label: "Phase 4 — Vision",       desc: "Fully autonomous farm management. Multi-site deployment. Unified data layer.", state: "" },
-      ] as tl}
+      {#each timeline as tl}
         <div class="tl-row">
           <div class="tl-dot" class:done={tl.state === "done"} class:active={tl.state === "active"} />
           <div><strong>{tl.label}</strong><p>{tl.desc}</p></div>
@@ -293,13 +245,9 @@
 <section id="species" class="section bg-white" data-reveal="sp">
   <div class="container">
     <div class="sec-hdr" class:vis={visible["sp"]}>
-      <div class="stag">03 — Cultivation</div>
-      <h2>Exclusive species.<br /><em>Deliberate selection.</em></h2>
-      <p class="sub">
-        We identify, source and cultivate varieties of exceptional rarity and
-        commercial value — refined through controlled cross-pollination no
-        conventional farm attempts.
-      </p>
+      <div class="stag">{t.sp.tag}</div>
+      <h2>{t.sp.h2_1}<br /><em>{t.sp.h2_2}</em></h2>
+      <p class="sub">{t.sp.sub}</p>
     </div>
     <div class="sp-row" class:vis={visible["sp"]}>
       {#each speciesItems as sp, i}
@@ -312,21 +260,17 @@
     <div class="bento" class:vis={visible["sp"]}>
       <div class="bento-big">
         <img src="{R2}/fish/fish-habitat.jpeg" alt="Fish" />
-        <div class="bento-cap">Our aquaponics fish habitat</div>
+        <div class="bento-cap">{t.sp.bento_cap}</div>
       </div>
       <div class="bento-small">
         <div class="bento-stat">
           <span class="bs-n">6</span>
-          <span class="bs-l">Active breeding programs</span>
+          <span class="bs-l">{t.sp.bento_stat}</span>
         </div>
         <img src="{R2}/plants/perm2.jpeg" alt="Plants" class="bento-img2" />
         <div class="bento-txt">
-          <h4>Cross-Pollination Program</h4>
-          <p>
-            Controlled hand-pollination across chilli, grape and herb lines —
-            selecting for aroma, yield, and disease resistance. Results logged
-            per generation. Goal: proprietary cultivars owned exclusively by SGG·AI.
-          </p>
+          <h4>{t.sp.bento_h4}</h4>
+          <p>{t.sp.bento_p}</p>
         </div>
       </div>
     </div>
@@ -337,9 +281,9 @@
 <section id="media" class="section bg-light" data-reveal="med">
   <div class="container">
     <div class="sec-hdr" class:vis={visible["med"]}>
-      <div class="stag">04 — Media</div>
-      <h2>From the <em>farm floor.</em></h2>
-      <p class="sub">A live record of our operations. Updated weekly as milestones are reached and harvests documented.</p>
+      <div class="stag">{t.med.tag}</div>
+      <h2>{t.med.h2_1} <em>{t.med.h2_2}</em></h2>
+      <p class="sub">{t.med.sub}</p>
     </div>
     <div class="gallery" class:vis={visible["med"]}>
       {#each gallery as g, i}
@@ -354,9 +298,8 @@
       {/each}
     </div>
     <div class="vid-row" class:vis={visible["med"]}>
-      {#each ["System Walkthrough", "AI Monitoring Demo"] as vt}
+      {#each t.med.videos as vt}
         <div class="vid-slot">
-          <!-- Replace with: <video src="/videos/file.mp4" controls></video> or <iframe src="https://youtube.com/embed/ID" allowfullscreen></iframe> -->
           <div class="vid-ph">
             <div class="play-ring">▶</div>
             <span>{vt}</span>
@@ -365,24 +308,24 @@
         </div>
       {/each}
     </div>
+
+    <div class="media-cta" class:vis={visible["med"]}>
+      <a href="/Smart_Polyponics.pdf" target="_blank" class="btn-view-presentation">
+        {t.med.btn}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="final-cta">
   <div class="container">
-    <h2>Interested in our technology?</h2>
-    <p>We are open to collaboration, research partnerships, and technology discussions. Reach out to learn more about our AI-driven aquaponics system.</p>
+    <h2>{t.contact.h2}</h2>
+    <p>{t.contact.p}</p>
     <div class="cta-row">
-      <a href="https://line.me/ti/p/carbonbasedlife" class="btn-primary btn-lg" target="_blank">Contact us on Line</a>
-      <a href="#aquaponics" class="btn-outline">Explore the System</a>
-    </div>
-
-      <div class="media-cta" class:vis={visible["med"]}>
-<a href="/Smart_Polyponics.pdf" target="_blank" class="btn-view-presentation">
-          View Full Presentation
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      </a>
+      <a href="https://line.me/ti/p/carbonbasedlife" class="btn-primary btn-lg" target="_blank">{t.contact.btn1}</a>
+      <a href="#aquaponics" class="btn-outline">{t.contact.btn2}</a>
     </div>
   </div>
 </section>
@@ -392,7 +335,7 @@
   <div class="container footer-grid">
     <div>
       <div class="footer-brand">SGGA<span>·AI</span></div>
-      <p>Sustainable Green Gold AI<br />Chiang Rai, Thailand</p>
+      <p>Sustainable Green Gold AI<br />{t.footer.location}</p>
       <div class="social-links">
         <a href="https://line.me/ti/p/carbonbasedlife" target="_blank" class="social-icon" title="Line">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
@@ -406,17 +349,17 @@
       </div>
     </div>
     <div class="footer-col">
-      <h5>Navigate</h5>
+      <h5>{t.footer.nav_title}</h5>
       {#each navLinks as l}<a href={l.href}>{l.label}</a>{/each}
-      <a href="#contact">Contact</a>
+      <a href="#contact">{t.nav.contact}</a>
     </div>
     <div class="footer-col">
-      <h5>Contact</h5>
+      <h5>{t.footer.contact_title}</h5>
       <a href="mailto:contact@sustainablegreengold.com">contact@sustainablegreengold.com</a>
     </div>
     <div class="footer-note">
-      <p>© 2025 Sustainable Green Gold AI. All rights reserved.</p>
-      <p>Chiang Rai, Thailand</p>
+      <p>{t.footer.rights}</p>
+      <p>{t.footer.location}</p>
       <p>+666 527 8077</p>
     </div>
   </div>
@@ -662,4 +605,8 @@
   .btn-view-presentation:hover { background: #111827; border-color: #ff5c2a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(5,13,30,0.2); }
   .btn-view-presentation svg { flex-shrink: 0; }
 
+  /* ── LANG TOGGLE ── */
+  .lang-toggle { background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4); backdrop-filter: blur(8px); padding: 0.45rem 0.9rem; border-radius: 100px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+  header.scrolled .lang-toggle { background: #f3f4f6; color: #374151; border-color: #e5e7eb; }
+  .lang-toggle:hover { background: rgba(255,255,255,0.25); }
 </style>
