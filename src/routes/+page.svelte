@@ -29,6 +29,7 @@
     { label: t.nav.automation, href: "#automation" },
     { label: t.nav.species, href: "#species" },
     { label: t.nav.media, href: "#media" },
+    { label: t.nav.growers, href: "#growers", grn: true },
   ];
 
   $: stats = [
@@ -51,6 +52,13 @@
     { src: `${R2}/plants/fig-fruit.jpg`,      cap: t.med.gallery[3] },
     { src: `${R2}/aquaponics/firstgen.jpeg`,  cap: t.med.gallery[4] },
     { src: `${R2}/aquaponics/my-system2.jpg`, cap: t.med.gallery[5] },
+  ];
+
+  $: growGallery = [
+    { src: `${R2}/growers/plant1.jpeg`, cap: t.grow.gallery[0] },
+    { src: `${R2}/growers/plant2.png`, cap: t.grow.gallery[1] },
+    { src: `${R2}/growers/flower.PNG`, cap: t.grow.gallery[2] },
+    { src: `${R2}/growers/bud.PNG`,    cap: t.grow.gallery[3] },
   ];
 
   const timelineStates = ["done", "active", "", ""];
@@ -108,7 +116,7 @@
       SGG<span class="brand-accent">·AI</span>
     </a>
     <ul class="desktop-links">
-      {#each navLinks as l}<li><a href={l.href}>{l.label}</a></li>{/each}
+      {#each navLinks as l}<li><a href={l.href} class:grn={l.grn}>{l.label}</a></li>{/each}
     </ul>
     <div class="nav-right">
       <button class="lang-toggle" on:click={toggleLang}>
@@ -121,7 +129,7 @@
     </div>
   </nav>
   <div class="mobile-menu" class:open={menuOpen}>
-    {#each navLinks as l}<a href={l.href} on:click={closeMenu}>{l.label}</a>{/each}
+    {#each navLinks as l}<a href={l.href} class:grn={l.grn} on:click={closeMenu}>{l.label}</a>{/each}
     <a href="#contact" class="m-cta" on:click={closeMenu}>{t.nav.contact} →</a>
   </div>
 </header>
@@ -278,6 +286,55 @@
   </div>
 </section>
 
+<!-- GROWERS -->
+<section id="growers" class="section bg-grow" data-reveal="grow">
+  <div class="container">
+    <div class="sec-hdr" class:vis={visible["grow"]}>
+      <div class="stag">{t.grow.tag}</div>
+      <h2>{t.grow.h2_1} <em>{t.grow.h2_2}</em></h2>
+      <p class="sub">{t.grow.sub}</p>
+    </div>
+
+    <div class="grow-stats" class:vis={visible["grow"]}>
+      {#each t.grow.stats as gs, i}
+        <div class="gstat" style="transition-delay:{i * 0.08}s">
+          <span class="gs-val">{gs.v}</span>
+          <span class="gs-lbl">{gs.l}</span>
+        </div>
+      {/each}
+    </div>
+
+    <div class="grow-split" class:vis={visible["grow"]}>
+      <div class="grow-text">
+        <p class="grow-p">{t.grow.p1}</p>
+        <p class="grow-p">{t.grow.p2}</p>
+        <ul class="cklist">
+          {#each t.grow.items as item}<li>{item}</li>{/each}
+        </ul>
+      </div>
+      <div class="grow-imgs">
+        <img class="grow-main" src="{R2}/growers/plant1.jpeg" alt="Cannabis grown on outdoor aquaponics" />
+        <img class="grow-float" src="{R2}/growers/bud.PNG" alt="Harvested flower" />
+      </div>
+    </div>
+
+    <p class="grow-proof" class:vis={visible["grow"]}>{t.grow.proof}</p>
+    <div class="grow-gal" class:vis={visible["grow"]}>
+      {#each growGallery as g, i}
+        <div class="g-slot" style="transition-delay:{i * 0.06}s">
+          <img src={g.src} alt={g.cap} />
+          <div class="g-cap">{g.cap}</div>
+        </div>
+      {/each}
+    </div>
+
+    <p class="grow-note" class:vis={visible["grow"]}>{t.grow.note}</p>
+    <div class="media-cta" class:vis={visible["grow"]}>
+      <a href="#contact" class="btn-grow">{t.grow.btn}</a>
+    </div>
+  </div>
+</section>
+
 <!-- MEDIA -->
 <section id="media" class="section bg-light" data-reveal="med">
   <div class="container">
@@ -386,6 +443,10 @@
   header.scrolled .desktop-links a { color: #374151; }
   .desktop-links a:hover { color: #fff; }
   header.scrolled .desktop-links a:hover { color: #ff5c2a; }
+  .desktop-links a.grn { color: #8dffa8; font-weight: 700; }
+  .desktop-links a.grn:hover { color: #c2ffd1; }
+  header.scrolled .desktop-links a.grn { color: #16a34a; }
+  header.scrolled .desktop-links a.grn:hover { color: #15803d; }
   .nav-right { display: flex; align-items: center; gap: 0.75rem; }
   .btn-nav { background: rgba(255,255,255,0.2); color: #fff; border: 1.5px solid rgba(255,255,255,0.5); backdrop-filter: blur(8px); padding: 0.55rem 1.2rem; border-radius: 100px; font-size: 0.85rem; font-weight: 700; text-decoration: none; transition: background 0.2s, border-color 0.2s, color 0.35s; }
   header.scrolled .btn-nav { background: #ff5c2a; border-color: #ff5c2a; color: #fff; }
@@ -400,9 +461,11 @@
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   .mobile-menu { position: absolute; top: 68px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #e5e7eb; display: flex; flex-direction: column; max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-  .mobile-menu.open { max-height: 400px; padding: 0.5rem 0; }
+  .mobile-menu.open { max-height: 440px; padding: 0.5rem 0; }
   .mobile-menu a { padding: 0.85rem 1.5rem; color: #374151; text-decoration: none; font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid #f3f4f6; display: block; transition: color 0.15s, background 0.15s; }
   .mobile-menu a:hover { color: #ff5c2a; background: #fff7f4; }
+  .mobile-menu a.grn { color: #16a34a; font-weight: 700; }
+  .mobile-menu a.grn:hover { color: #15803d; background: #f2f8f3; }
   .m-cta { color: #ff5c2a !important; font-weight: 700 !important; }
 
   /* ── HERO ── */
@@ -538,6 +601,32 @@
   .bento-txt h4 { font-size: 0.93rem; font-weight: 700; color: #050d1e; margin-bottom: 0.5rem; }
   .bento-txt p { font-size: 0.83rem; color: #4b5563; line-height: 1.7; }
 
+  /* ── GROWERS ── */
+  .bg-grow { background: #f2f8f3; }
+  #growers .stag { color: #16a34a; }
+  #growers h2 em { color: #16a34a; }
+  #growers .cklist li::before { color: #16a34a; }
+  #growers .cklist li { border-bottom-color: #e2efe4; }
+  .grow-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin-bottom: 3.5rem; opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .grow-stats.vis { opacity: 1; transform: none; }
+  .gstat { background: #fff; border: 1px solid #d7ead9; border-radius: 10px; padding: 1.5rem 1.25rem; text-align: center; }
+  .gs-val { display: block; font-size: 2rem; font-weight: 800; color: #16a34a; line-height: 1.1; }
+  .gs-lbl { display: block; font-size: 0.77rem; color: #4b5563; margin-top: 0.5rem; line-height: 1.5; }
+  .grow-split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 3.5rem; opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease 0.1s, transform 0.8s ease 0.1s; }
+  .grow-split.vis { opacity: 1; transform: none; }
+  .grow-p { color: #374151; font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.1rem; }
+  .grow-imgs { position: relative; }
+  .grow-main { width: 100%; height: 480px; object-fit: cover; border-radius: 12px; display: block; box-shadow: 0 16px 60px rgba(20,83,45,0.15); }
+  .grow-float { position: absolute; bottom: -1.5rem; left: -1.5rem; width: 190px; height: 190px; object-fit: cover; border-radius: 10px; border: 4px solid #fff; box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
+  .grow-proof { text-align: center; color: #14532d; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.25rem; opacity: 0; transition: opacity 0.8s ease 0.15s; }
+  .grow-proof.vis { opacity: 1; }
+  .grow-gal { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s; }
+  .grow-gal.vis { opacity: 1; transform: none; }
+  .grow-gal .g-slot { aspect-ratio: 3/4; }
+  .grow-note { color: #6b7280; font-size: 0.73rem; text-align: center; margin-top: 1.75rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .btn-grow { display: inline-block; text-decoration: none; background: #16a34a; color: #fff; padding: 0.9rem 2.1rem; border-radius: 8px; font-size: 0.93rem; font-weight: 700; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(22,163,74,0.3); }
+  .btn-grow:hover { background: #15803d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(22,163,74,0.35); }
+
   /* ── GALLERY ── */
   .gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.5rem; opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .gallery.vis { opacity: 1; transform: none; }
@@ -586,6 +675,9 @@
     .hamburger { display: flex; }
     .split { grid-template-columns: 1fr; gap: 2rem; }
     .img-float { display: none; }
+    .grow-split { grid-template-columns: 1fr; gap: 2rem; }
+    .grow-float { display: none; }
+    .grow-main { height: 380px; }
   }
   @media (max-width: 768px) {
     .stats-grid { grid-template-columns: repeat(2,1fr); }
@@ -593,12 +685,16 @@
     .sp-row { grid-template-columns: 1fr; }
     .bento { grid-template-columns: 1fr; }
     .gallery { grid-template-columns: 1fr 1fr; }
+    .grow-stats { grid-template-columns: 1fr 1fr; }
+    .grow-gal { grid-template-columns: 1fr 1fr; }
     .vid-row { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 480px) {
     .cards-grid { grid-template-columns: 1fr; }
     .gallery { grid-template-columns: 1fr; }
+    .grow-stats { grid-template-columns: 1fr; }
+    .grow-gal { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
   }
 
