@@ -617,13 +617,13 @@
   #growers h2 em { color: #16a34a; }
   #growers .cklist li::before { color: #16a34a; }
   #growers .cklist li { border-bottom-color: #e2efe4; }
-  .grow-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin-bottom: 3.5rem; opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .grow-stats.vis { opacity: 1; transform: none; }
+  .grow-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; margin-bottom: 3.5rem; }
+
   .gstat { background: #fff; border: 1px solid #d7ead9; border-radius: 10px; padding: 1.5rem 1.25rem; text-align: center; }
   .gs-val { display: block; font-size: 2rem; font-weight: 800; color: #16a34a; line-height: 1.1; }
   .gs-lbl { display: block; font-size: 0.77rem; color: #4b5563; margin-top: 0.5rem; line-height: 1.5; }
-  .grow-segs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3.5rem; opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease 0.05s, transform 0.8s ease 0.05s; }
-  .grow-segs.vis { opacity: 1; transform: none; }
+  .grow-segs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3.5rem; }
+
   .grow-seg { background: #fff; border: 1px solid #d7ead9; border-radius: 12px; padding: 2rem; }
   .seg-hdr { display: inline-block; background: #16a34a; border-radius: 100px; padding: 0.3rem 0.9rem; margin-bottom: 1rem; }
   .seg-hdr span { color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -632,16 +632,16 @@
   .grow-seg ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
   .grow-seg li { font-size: 0.85rem; color: #374151; padding-left: 1.1rem; position: relative; }
   .grow-seg li::before { content: "→"; position: absolute; left: 0; color: #16a34a; font-size: 0.78rem; }
-  .grow-split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 3.5rem; opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease 0.1s, transform 0.8s ease 0.1s; }
-  .grow-split.vis { opacity: 1; transform: none; }
+  .grow-split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 3.5rem; }
+
   .grow-p { color: #374151; font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.1rem; }
   .grow-imgs { position: relative; }
   .grow-main { width: 100%; height: 480px; object-fit: cover; border-radius: 12px; display: block; box-shadow: 0 16px 60px rgba(20,83,45,0.15); }
   .grow-float { position: absolute; bottom: -1.5rem; left: -1.5rem; width: 190px; height: 190px; object-fit: cover; border-radius: 10px; border: 4px solid #fff; box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
-  .grow-proof { text-align: center; color: #14532d; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.25rem; opacity: 0; transition: opacity 0.8s ease 0.15s; }
-  .grow-proof.vis { opacity: 1; }
-  .grow-gal { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s; }
-  .grow-gal.vis { opacity: 1; transform: none; }
+  .grow-proof { text-align: center; color: #14532d; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.25rem; }
+
+  .grow-gal { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+
   .grow-gal .g-slot { aspect-ratio: 3/4; }
   .grow-note { color: #6b7280; font-size: 0.73rem; text-align: center; margin-top: 1.75rem; max-width: 640px; margin-left: auto; margin-right: auto; }
   .btn-grow { display: inline-block; text-decoration: none; background: #16a34a; color: #fff; padding: 0.9rem 2.1rem; border-radius: 8px; font-size: 0.93rem; font-weight: 700; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(22,163,74,0.3); }
