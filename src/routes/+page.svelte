@@ -194,6 +194,34 @@
   </div>
 </section>
 
+<!-- INSTALLATIONS -->
+<section id="installations" class="section bg-light" data-reveal="inst">
+  <div class="container">
+    <div class="sec-hdr" class:vis={visible["inst"]}>
+      <div class="stag">{t.inst.tag}</div>
+      <h2>{t.inst.h2_1} <em>{t.inst.h2_2}</em></h2>
+      <p class="sub">{t.inst.sub}</p>
+    </div>
+    <div class="inst-cards" class:vis={visible["inst"]}>
+      <div class="inst-card inst-dark">
+        <div class="inst-badge">{t.inst.full.badge}</div>
+        <h3>{t.inst.full.title}</h3>
+        <p>{t.inst.full.body}</p>
+        <ul>{#each t.inst.full.points as pt}<li>{pt}</li>{/each}</ul>
+      </div>
+      <div class="inst-card inst-lite">
+        <div class="inst-badge">{t.inst.demo.badge}</div>
+        <h3>{t.inst.demo.title}</h3>
+        <p>{t.inst.demo.body}</p>
+        <ul>{#each t.inst.demo.points as pt}<li>{pt}</li>{/each}</ul>
+      </div>
+    </div>
+    <div class="media-cta" class:vis={visible["inst"]}>
+      <a href="#contact" class="btn-primary btn-lg">{t.inst.btn}</a>
+    </div>
+  </div>
+</section>
+
 <!-- AQUAPONICS -->
 <section id="aquaponics" class="section bg-white" data-reveal="aq">
   <div class="container">
@@ -548,6 +576,30 @@
   .btn-outline { display: inline-block; text-decoration: none; color: #374151; font-size: 0.9rem; font-weight: 600; border: 2px solid #e5e7eb; padding: 0.95rem 1.75rem; border-radius: 8px; transition: border-color 0.2s, color 0.2s; }
   .btn-outline:hover { border-color: #ff5c2a; color: #ff5c2a; }
 
+  /* ── INSTALLATIONS ── */
+  #installations .sec-hdr { max-width: 780px; }
+  #installations h2 { font-size: clamp(2.6rem, 5.5vw, 4.2rem); font-weight: 900; letter-spacing: -0.035em; line-height: 1.05; }
+  #installations h2 em { font-weight: 600; }
+  #installations .sub { font-size: 1.35rem; color: #374151; font-weight: 500; line-height: 1.8; }
+  .inst-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .inst-cards.vis { opacity: 1; transform: none; }
+  .inst-card { border-radius: 12px; padding: 2.5rem 2.25rem; }
+  .inst-dark { background: #050d1e; box-shadow: 0 16px 48px rgba(5,13,30,0.18); }
+  .inst-lite { background: #fff; border: 1px solid #e5e7eb; }
+  .inst-badge { display: inline-block; background: #ff5c2a; border-radius: 100px; padding: 0.3rem 0.9rem; margin-bottom: 1.1rem; color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .inst-lite .inst-badge { background: #fff2ec; color: #e04a1f; }
+  .inst-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.7rem; letter-spacing: -0.01em; }
+  .inst-dark h3 { color: #f9fafb; }
+  .inst-lite h3 { color: #050d1e; }
+  .inst-card > p { font-size: 0.92rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .inst-dark > p { color: rgba(255,255,255,0.6); }
+  .inst-lite > p { color: #4b5563; }
+  .inst-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .inst-card li { font-size: 0.87rem; padding-left: 1.1rem; position: relative; }
+  .inst-card li::before { content: "→"; position: absolute; left: 0; color: #ff5c2a; font-size: 0.78rem; }
+  .inst-dark li { color: rgba(255,255,255,0.75); }
+  .inst-lite li { color: #374151; }
+
   /* ── SPLIT ── */
   .split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .split.vis { opacity: 1; transform: none; }
@@ -710,6 +762,7 @@
     .grow-gal { grid-template-columns: 1fr 1fr; }
     .vid-row { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
+    .inst-cards { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .cards-grid { grid-template-columns: 1fr; }
@@ -717,6 +770,7 @@
     .grow-stats { grid-template-columns: 1fr; }
     .grow-gal { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
+    .inst-card { padding: 2rem 1.5rem; }
   }
 
   /* ── MEDIA CTA ── */

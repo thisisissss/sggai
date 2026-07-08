@@ -33,6 +33,34 @@ export const translations = {
       { label: "Water Recycled" },
       { label: "Projected Yield Growth" },
     ],
+    inst: {
+      tag: "00 — Installations",
+      h2_1: "We install.",
+      h2_2: "You harvest.",
+      sub: "Sensor-monitored aquaponics installations are our specialty. Whatever your space, budget, or ambition — we design the system, build it on your land, and wire it with live monitoring. You get a farm that runs.",
+      full: {
+        badge: "Turnkey",
+        title: "Full Custom Installation",
+        body: "We design and install everything around your desires and abilities — the scale, the fish, the crops, the level of automation. Tanks, grow beds, plumbing, biofilter, and a sensor network tracking water chemistry around the clock. You receive a working, monitored ecosystem — not a kit.",
+        points: [
+          "Designed for your site, budget, and goals",
+          "pH / EC / DO / ORP sensors with live monitoring",
+          "Fish and plant species matched to your climate and market",
+          "Setup, training, and ongoing support included",
+        ],
+      },
+      demo: {
+        badge: "Starter",
+        title: "Basic Demo System",
+        body: "Not sure what you want yet, but interested? We offer a basic demo version — a compact working setup with the same closed loop of fish, plants, and monitoring, so you can see aquaponics running on your own site before committing to a full build. Just inquire.",
+        points: [
+          "Compact footprint, minimal cost of entry",
+          "The same closed-loop biology as the full system",
+          "Upgrades into a full installation whenever you're ready",
+        ],
+      },
+      btn: "Inquire Now",
+    },
     aq: {
       tag: "01 — Ecosystem",
       h2_1: "A living system,",
@@ -201,6 +229,34 @@ export const translations = {
       { label: "น้ำที่นำกลับมาใช้ใหม่" },
       { label: "การเติบโตของผลผลิตที่คาดการณ์" },
     ],
+    inst: {
+      tag: "00 — การติดตั้งระบบ",
+      h2_1: "เราติดตั้ง",
+      h2_2: "คุณเก็บเกี่ยว",
+      sub: "การติดตั้งระบบอควาโพนิกส์พร้อมเซ็นเซอร์ตรวจวัดคือความเชี่ยวชาญของเรา ไม่ว่าพื้นที่ งบประมาณ หรือเป้าหมายของคุณจะเป็นแบบไหน — เราออกแบบระบบ สร้างในพื้นที่ของคุณ และติดตั้งการติดตามแบบเรียลไทม์ คุณได้ฟาร์มที่ทำงานได้จริง",
+      full: {
+        badge: "ครบวงจร",
+        title: "ติดตั้งเต็มรูปแบบตามความต้องการ",
+        body: "เราออกแบบและติดตั้งทุกอย่างตามความต้องการและความพร้อมของคุณ — ขนาดระบบ ชนิดปลา พืชที่ปลูก และระดับการทำงานอัตโนมัติ ถังปลา แปลงปลูก ระบบท่อ ไบโอฟิลเตอร์ และเครือข่ายเซ็นเซอร์ที่ตรวจวัดเคมีน้ำตลอด 24 ชั่วโมง คุณจะได้รับระบบนิเวศที่ทำงานได้จริงพร้อมระบบติดตาม — ไม่ใช่แค่ชุดอุปกรณ์",
+        points: [
+          "ออกแบบให้เหมาะกับพื้นที่ งบประมาณ และเป้าหมายของคุณ",
+          "เซ็นเซอร์ pH / EC / DO / ORP พร้อมการติดตามแบบเรียลไทม์",
+          "เลือกชนิดปลาและพืชให้เหมาะกับสภาพอากาศและตลาดของคุณ",
+          "รวมการติดตั้ง การอบรม และการดูแลต่อเนื่อง",
+        ],
+      },
+      demo: {
+        badge: "เริ่มต้น",
+        title: "ระบบสาธิตขนาดเล็ก",
+        body: "ยังไม่แน่ใจว่าต้องการแบบไหน แต่สนใจ? เรามีระบบสาธิตแบบพื้นฐาน — ระบบขนาดกะทัดรัดที่ทำงานได้จริง ด้วยวงจรปิดเดียวกันของปลา พืช และระบบตรวจวัด ให้คุณเห็นอควาโพนิกส์ทำงานในพื้นที่ของคุณเองก่อนตัดสินใจติดตั้งเต็มรูปแบบ เพียงสอบถามเข้ามา",
+        points: [
+          "ขนาดกะทัดรัด ต้นทุนเริ่มต้นต่ำ",
+          "ชีววิทยาวงจรปิดเดียวกับระบบเต็มรูปแบบ",
+          "อัปเกรดเป็นการติดตั้งเต็มรูปแบบได้ทุกเมื่อที่คุณพร้อม",
+        ],
+      },
+      btn: "สอบถามเลย",
+    },
     aq: {
       tag: "01 — ระบบนิเวศ",
       h2_1: "ระบบที่มีชีวิต,",
