@@ -187,11 +187,11 @@ export const translations = {
       btn2: "Explore the System",
     },
     footer: {
-      desc: "Sustainable Green Gold AI\nChiang Rai, Thailand",
+      desc: "Sustainable Green Gold AI",
       nav_title: "Navigate",
       contact_title: "Contact",
       rights: "© 2026 Sustainable Green Gold AI. All rights reserved.",
-      location: "Chiang Rai, Thailand",
+      location: "207 Moo 4, Tambon Nang Lae, Chiang Rai, Thailand",
     },
   },
 
@@ -383,11 +383,11 @@ export const translations = {
       btn2: "สำรวจระบบ",
     },
     footer: {
-      desc: "Sustainable Green Gold AI\nเชียงราย ประเทศไทย",
-      nav_title: "นำทาง",
-      contact_title: "ติดต่อ",
+      desc: "Sustainable Green Gold AI",
+      nav_title: "เมนู",
+      contact_title: "ติดต่อเรา",
       rights: "© 2026 Sustainable Green Gold AI สงวนลิขสิทธิ์",
-      location: "เชียงราย ประเทศไทย",
+      location: "207 หมู่ 4 ตำบลนางแล อำเภอเมืองเชียงราย จังหวัดเชียงราย ประเทศไทย",
     },
   },
 };
