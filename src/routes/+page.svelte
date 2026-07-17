@@ -427,7 +427,7 @@
     <h2>{t.contact.h2}</h2>
     <p>{t.contact.p}</p>
     <div class="cta-row">
-      <a href="https://line.me/ti/p/carbonbasedlife" class="btn-primary btn-lg" target="_blank" on:click={() => track('line_click', { location: 'contact_main' })}>{t.contact.btn1}</a>
+      <a href="https://line.me/ti/p/eZ2GG61uIe" class="btn-primary btn-lg" target="_blank" on:click={() => track('line_click', { location: 'contact_main' })}>{t.contact.btn1}</a>
       <a href="#aquaponics" class="btn-outline">{t.contact.btn2}</a>
     </div>
   </div>
