@@ -9,6 +9,12 @@
   function toggleLang() { lang = lang === "en" ? "th" : "en"; }
 
   // GA4 event helper — safe on SSR and when gtag is blocked
+  function getVariant() {
+    if (typeof document === 'undefined') return 'unknown';
+    const m = document.cookie.match(/(?:^|; )ab_variant=([ab])/);
+    return m ? m[1] : 'unknown';
+  }
+
   function track(name, params = {}) {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
       window.gtag("event", name, params);
