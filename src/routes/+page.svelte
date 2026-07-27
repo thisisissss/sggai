@@ -42,6 +42,7 @@
     { label: t.nav.automation, href: "#automation" },
     { label: t.nav.species, href: "#species" },
     { label: t.nav.media, href: "#media" },
+    { label: t.nav.resources, href: "/resources" }, 
     { label: t.nav.growers, href: "#growers", grn: true },
   ];
 

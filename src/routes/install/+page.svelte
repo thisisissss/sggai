@@ -10,14 +10,14 @@
 
   // GA4 event helper — safe on SSR and when gtag is blocked
   function getVariant() {
-    if (typeof document === 'undefined') return 'unknown';
+    if (typeof document === "undefined") return "unknown";
     const m = document.cookie.match(/(?:^|; )ab_variant=([ab])/);
-    return m ? m[1] : 'unknown';
+    return m ? m[1] : "unknown";
   }
 
   function track(name, params = {}) {
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
-      window.gtag("event", name, params);
+      window.gtag("event", name, { variant: getVariant(), ...params });
     }
   }
 
@@ -47,6 +47,7 @@
         system: "The System",
         growers: "For Growers",
         farm: "The Farm",
+        resources: "Resources",
         contact: "Contact Us",
       },
       what: {
@@ -81,6 +82,7 @@
         p: "This is not a concept. Our facility runs today: fish waste feeds plants, plants purify water, and a proprietary sensor network logs the chemistry hour by hour. Visit the farm, see the harvests, and talk through a system for your own site.",
         log: "SENSOR LOG · HARVEST — TANK ROW A · CHIANG RAI",
         cta: "BOOK A FARM VISIT",
+        pdf: "VIEW FULL PRESENTATION",
       },
       growers: {
         eyebrow: "FOR LICENSED GROWERS",
@@ -118,6 +120,7 @@
         system: "ระบบของเรา",
         growers: "สำหรับผู้ปลูก",
         farm: "ฟาร์มของเรา",
+        resources: "แหล่งข้อมูล",
         contact: "ติดต่อเรา",
       },
       what: {
@@ -152,6 +155,7 @@
         p: "นี่ไม่ใช่แค่แนวคิด ฟาร์มของเราทำงานอยู่ทุกวัน: ของเสียจากปลาหล่อเลี้ยงพืช พืชช่วยทำให้น้ำบริสุทธิ์ และเครือข่ายเซ็นเซอร์บันทึกเคมีน้ำทุกชั่วโมง มาเยี่ยมชมฟาร์ม ดูผลผลิตจริง และพูดคุยเรื่องระบบสำหรับพื้นที่ของคุณ",
         log: "บันทึกเซ็นเซอร์ · การเก็บเกี่ยว — แถวถัง A · เชียงราย",
         cta: "นัดเยี่ยมชมฟาร์ม",
+        pdf: "ดูเอกสารนำเสนอ",
       },
       growers: {
         eyebrow: "สำหรับผู้ปลูกที่มีใบอนุญาต",
@@ -200,6 +204,7 @@
       <li><a href="#next">{t.nav.system}</a></li>
       <li><a href="#growers">{t.nav.growers}</a></li>
       <li><a href="#farm">{t.nav.farm}</a></li>
+      <li><a href="/resources">{t.nav.resources}</a></li>
     </ul>
     <div class="nav-right">
       <button class="lang" on:click={toggleLang}>{lang === "en" ? "ไทย" : "EN"}</button>
@@ -214,6 +219,7 @@
     <a href="#next" on:click={() => (menuOpen = false)}>{t.nav.system}</a>
     <a href="#growers" on:click={() => (menuOpen = false)}>{t.nav.growers}</a>
     <a href="#farm" on:click={() => (menuOpen = false)}>{t.nav.farm}</a>
+    <a href="/resources" on:click={() => (menuOpen = false)}>{t.nav.resources}</a>
     <a href="#contact" class="m-cta" on:click={() => { menuOpen = false; track("cta_click", { location: "install_mobile_nav" }); }}>{t.nav.contact} →</a>
   </div>
 </header>
@@ -301,7 +307,19 @@
       <div class="eyebrow">{t.farm.eyebrow}</div>
       <h2>{t.farm.h2}</h2>
       <p>{t.farm.p}</p>
-      <a href={LINE_URL} target="_blank" rel="noopener" class="btn-solid" on:click={() => track("line_click", { location: "install_farm" })}>{t.farm.cta}</a>
+      <div class="btn-row">
+        <a href={LINE_URL} target="_blank" rel="noopener" class="btn-solid" on:click={() => track("line_click", { location: "install_farm" })}>{t.farm.cta}</a>
+        <a
+          href={lang === "th" ? "/Smart_Polyponics_TH.pdf" : "/Smart_Polyponics_EN.pdf"}
+          target="_blank"
+          rel="noopener"
+          class="btn-dark"
+          on:click={() => track("presentation_view", { lang, location: "install_farm" })}
+        >
+          {t.farm.pdf}
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -350,6 +368,7 @@
     <div class="foot-brand">SGG<span>·AI</span></div>
     <div class="foot-links">
       <a href="/">{t.footer.home}</a>
+      <a href="/resources">{t.nav.resources}</a>
       <a href="mailto:{t.footer.email}">{t.footer.email}</a>
       <a href={LINE_URL} target="_blank" rel="noopener" on:click={() => track("line_click", { location: "install_footer" })}>Line</a>
     </div>
@@ -391,7 +410,7 @@
   .burger.open span:nth-child(2) { opacity: 0; }
   .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .mmenu { display: flex; flex-direction: column; background: #fff; border-bottom: 1px solid #eceff1; max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-  .mmenu.open { max-height: 320px; }
+  .mmenu.open { max-height: 380px; }
   .mmenu a { font-family: "Bebas Neue", "Manrope", sans-serif; padding: 0.85rem 1.5rem; color: #374151; text-decoration: none; font-size: 1.05rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid #f3f4f6; }
   .mmenu a:hover { color: #ff5c2a; }
   .m-cta { color: #ff5c2a !important; }
@@ -429,6 +448,10 @@
   .btn-green { background: #16a34a; }
   .btn-green:hover { background: #15803d; }
   .btn-big { padding: 1.15rem 2.8rem; font-size: 0.9rem; }
+  .btn-row { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; }
+  .btn-dark { font-family: "Bebas Neue", "Manrope", sans-serif; display: inline-flex; align-items: center; gap: 0.55rem; text-decoration: none; background: #0a1f1a; color: #fff; padding: 0.95rem 1.9rem; border-radius: 4px; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.15s, transform 0.15s; }
+  .btn-dark:hover { background: #133029; transform: translateY(-2px); }
+  .btn-dark svg { flex-shrink: 0; }
 
   /* ── CARDS ── */
   .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.25rem; margin-bottom: 3rem; text-align: center; }
@@ -509,5 +532,7 @@
   @media (max-width: 520px) {
     .cards { grid-template-columns: 1fr; gap: 2.5rem; }
     .btn-nav { display: none; }
+    .btn-row { flex-direction: column; align-items: stretch; }
+    .btn-solid, .btn-dark { text-align: center; justify-content: center; }
   }
 </style>
