@@ -31,6 +31,72 @@
 			// gtag('config', 'G-193WV3ZD4J', { debug_mode: true });
 		</script>
 
+		<!-- Structured data: who we are, so search engines stop confusing us
+		     with the Swiss recycled-gold firm of a similar name. -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": ["Organization", "LocalBusiness"],
+					"@id": "https://sustainablegreengold.com/#organization",
+					"name": "Sustainable Green Gold Co., Ltd.",
+					"alternateName": ["Sustainable Green Gold AI", "SGG·AI", "บริษัท ซัสเทนเนเบิ้ล กรีน โกลด์ จำกัด"],
+					"description": "Aquaponics system design and installation with live water-chemistry monitoring. Operational farm in Chiang Rai, Thailand.",
+					"url": "https://sustainablegreengold.com/",
+					"logo": "https://media.sustainablegreengold.com/og/logo.png",
+					"image": "https://media.sustainablegreengold.com/aquaponics/my-system1.jpg",
+					"email": "contact@sustainablegreengold.com",
+					"telephone": "+66-6-6527-8077",
+					"foundingDate": "2023-06-09",
+					"identifier": {
+						"@type": "PropertyValue",
+						"name": "Thai juristic person ID",
+						"value": "0575566003104"
+					},
+					"address": {
+						"@type": "PostalAddress",
+						"streetAddress": "207 Moo 4, Tambon Nang Lae",
+						"addressLocality": "Chiang Rai",
+						"addressRegion": "Chiang Rai",
+						"addressCountry": "TH"
+					},
+					"areaServed": {
+						"@type": "Country",
+						"name": "Thailand"
+					},
+					"knowsAbout": [
+						"Aquaponics",
+						"Recirculating aquaculture",
+						"Water quality monitoring",
+						"Sensor networks",
+						"Sustainable agriculture"
+					],
+					"sameAs": [
+						"https://www.facebook.com/profile.php?id=61556530944739",
+						"https://www.instagram.com/sustainablegreengold",
+						"https://www.tiktok.com/@digital.farm.cr"
+					]
+				},
+				{
+					"@type": "WebSite",
+					"@id": "https://sustainablegreengold.com/#website",
+					"url": "https://sustainablegreengold.com/",
+					"name": "Sustainable Green Gold AI",
+					"inLanguage": ["en", "th"],
+					"publisher": { "@id": "https://sustainablegreengold.com/#organization" }
+				},
+				{
+					"@type": "Service",
+					"name": "Aquaponics system installation",
+					"serviceType": "Aquaponics system design, installation and monitoring",
+					"provider": { "@id": "https://sustainablegreengold.com/#organization" },
+					"areaServed": { "@type": "Country", "name": "Thailand" }
+				}
+			]
+		}
+		</script>
+
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

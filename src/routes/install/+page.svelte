@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import Seo from "$lib/Seo.svelte";
 
   const R2 = "https://media.sustainablegreengold.com";
   const LINE_URL = "https://line.me/ti/p/eZ2GG61uIe";
@@ -106,6 +107,7 @@
         h2: "READY TO GROW?",
         p: "Tell us about your land, your budget, and what you want to harvest. We answer on Line, usually within the day.",
         cta: "CONTACT US ON LINE",
+        email: "OR EMAIL US",
       },
       footer: {
         rights: "© 2026 Sustainable Green Gold AI. All rights reserved.",
@@ -179,6 +181,7 @@
         h2: "พร้อมจะปลูกหรือยัง?",
         p: "เล่าให้เราฟังเกี่ยวกับพื้นที่ งบประมาณ และสิ่งที่คุณอยากเก็บเกี่ยว เราตอบทาง Line โดยปกติภายในวันเดียวกัน",
         cta: "ติดต่อเราทาง Line",
+        email: "หรืออีเมลถึงเรา",
       },
       footer: {
         rights: "© 2026 Sustainable Green Gold AI สงวนลิขสิทธิ์",
@@ -190,8 +193,14 @@
   };
 </script>
 
+<Seo
+  title="Aquaponics Installations In Thailand — Sustainable Green Gold AI"
+  description="Turnkey aquaponics installations with live water-chemistry monitoring. Sunlight replaces the lighting bill, the biofilter replaces the fertilizer schedule. Operational farm in Chiang Rai."
+  path="/install"
+  canonicalPath="/"
+/>
+
 <svelte:head>
-  <title>Sustainable Green Gold AI — Aquaponics Installations</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </svelte:head>
 
@@ -358,18 +367,22 @@
   <div class="wrap center" class:vis={visible["contact"]}>
     <h2>{t.contact.h2}</h2>
     <p class="band-sub">{t.contact.p}</p>
-    <a href={LINE_URL} target="_blank" rel="noopener" class="btn-solid btn-big" on:click={() => track("line_click", { location: "install_contact" })}>{t.contact.cta}</a>
+    <div class="btn-row center-row">
+      <a href={LINE_URL} target="_blank" rel="noopener" class="btn-solid btn-big" on:click={() => track("line_click", { location: "install_contact" })}>{t.contact.cta}</a>
+      <a href="mailto:contact@sustainablegreengold.com?subject=Aquaponics%20system%20enquiry" class="btn-ghost-dark" on:click={() => track("email_click", { location: "install_contact" })}>{t.contact.email}</a>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-<div class="wrap foot">
+  <div class="wrap foot">
     <div class="foot-brand">SGG<span>·AI</span></div>
     <div class="foot-links">
       <a href="/">{t.footer.home}</a>
       <a href="/resources">{t.nav.resources}</a>
       <a href="mailto:{t.footer.email}">{t.footer.email}</a>
+      <a href={LINE_URL} target="_blank" rel="noopener" on:click={() => track("line_click", { location: "install_footer" })}>Line</a>
     </div>
     <div class="social-links">
       <a href="https://line.me/ti/p/carbonbasedlife" target="_blank" rel="noopener" class="social-icon" title="Line" on:click={() => track("line_click", { location: "install_footer" })}>
@@ -389,6 +402,10 @@
       </a>
     </div>
     <div class="foot-note">
+      <p>{t.footer.location}</p>
+      <p>{t.footer.rights}</p>
+    </div>
+  </div>
 </footer>
 
 <style>
@@ -511,8 +528,16 @@
   .quote-line { font-family: "Fraunces", serif; font-style: italic; font-weight: 300; font-size: clamp(1.6rem, 3.6vw, 2.6rem); line-height: 1.35; color: #f9fafb; max-width: 860px; margin: 0 auto 1.75rem; }
   .quote-attr { color: rgba(255,255,255,0.45); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
 
+  .center-row { justify-content: center; }
+  .btn-ghost-dark { font-family: "Bebas Neue", "Manrope", sans-serif; display: inline-flex; align-items: center; text-decoration: none; background: transparent; color: #0b0f14; border: 1.5px solid #c6cec4; padding: 1.1rem 2.2rem; border-radius: 4px; font-size: 1.05rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; transition: border-color 0.15s, color 0.15s; }
+  .btn-ghost-dark:hover { border-color: #ff5c2a; color: #ff5c2a; }
+
   /* ── FOOTER ── */
   footer { background: #081713; padding: 3.5rem 0; }
+  .social-links { display: flex; gap: 1.15rem; align-items: center; }
+  .social-icon { color: rgba(255,255,255,0.4); display: flex; align-items: center; transition: color 0.15s; }
+  .social-icon:hover { color: #ff5c2a; }
+  .social-icon svg { width: 20px; height: 20px; }
   .foot { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; }
   .foot-brand { font-size: 1.2rem; font-weight: 800; color: #fff; }
   .foot-brand span { color: #ff5c2a; }
@@ -520,11 +545,6 @@
   .foot-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s; }
   .foot-links a:hover { color: #ff5c2a; }
   .foot-note p { color: rgba(255,255,255,0.32); font-size: 0.76rem; margin-bottom: 0.25rem; }
-
-  .social-links { display: flex; gap: 1.15rem; align-items: center; }
-  .social-icon { color: rgba(255,255,255,0.4); display: flex; align-items: center; transition: color 0.15s; }
-  .social-icon:hover { color: #ff5c2a; }
-  .social-icon svg { width: 20px; height: 20px; }
 
   /* ── MOTION / A11Y ── */
   @media (prefers-reduced-motion: reduce) {

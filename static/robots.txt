@@ -1,0 +1,5 @@
+# https://sustainablegreengold.com
+User-agent: *
+Allow: /
+
+Sitemap: https://sustainablegreengold.com/sitemap.xml

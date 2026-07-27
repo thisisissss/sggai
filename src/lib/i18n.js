@@ -32,7 +32,7 @@ export const translations = {
       { label: "Active Fish Tanks" },
       { label: "Plant Varieties" },
       { label: "Water Recycled" },
-      { label: "Projected Yield Growth" },
+      { label: "Baht Spent On Fertilizer" },
     ],
     inst: {
       tag: "00 — Installations",
@@ -186,6 +186,7 @@ export const translations = {
       p: "We are open to collaboration, research partnerships, and technology discussions. Reach out to learn more about our AI-driven aquaponics system.",
       btn1: "Contact us on Line",
       btn2: "Explore the System",
+      btn3: "Email us",
     },
     footer: {
       desc: "Sustainable Green Gold AI",
@@ -229,7 +230,7 @@ export const translations = {
       { label: "ถังปลาที่ใช้งานอยู่" },
       { label: "พันธุ์พืช" },
       { label: "น้ำที่นำกลับมาใช้ใหม่" },
-      { label: "การเติบโตของผลผลิตที่คาดการณ์" },
+      { label: "บาทที่จ่ายเป็นค่าปุ๋ย" },
     ],
     inst: {
       tag: "00 — การติดตั้งระบบ",
@@ -383,6 +384,7 @@ export const translations = {
       p: "เราเปิดรับความร่วมมือ หุ้นส่วนการวิจัย และการหารือด้านเทคโนโลยี ติดต่อเพื่อเรียนรู้เพิ่มเติมเกี่ยวกับระบบอควาโพนิกส์ขับเคลื่อนด้วย AI ของเรา",
       btn1: "ติดต่อเราทาง Line",
       btn2: "สำรวจระบบ",
+      btn3: "อีเมลถึงเรา",
     },
     footer: {
       desc: "Sustainable Green Gold AI",

@@ -1,5 +1,6 @@
 <script>
   import { translations } from '$lib/i18n.js';
+  import Seo from '$lib/Seo.svelte';
   import { onMount } from "svelte";
 
   const R2 = "https://media.sustainablegreengold.com";
@@ -122,6 +123,12 @@
     };
   });
 </script>
+
+<Seo
+  title="Aquaponics Systems In Thailand — Sustainable Green Gold AI"
+  description="We design and install sensor-monitored aquaponics systems anywhere in Thailand. Fish feed the plants, the plants clean the water — zero fertilizer, a fraction of the water. Operational farm in Chiang Rai."
+  path="/"
+/>
 
 <!-- NAV -->
 <header class:scrolled>
@@ -435,7 +442,8 @@
     <h2>{t.contact.h2}</h2>
     <p>{t.contact.p}</p>
     <div class="cta-row">
-      <a href="https://line.me/ti/p/eZ2GG61uIe" class="btn-primary btn-lg" target="_blank" on:click={() => track('line_click', { location: 'contact_main' })}>{t.contact.btn1}</a>
+      <a href="https://line.me/ti/p/eZ2GG61uIe" class="btn-primary btn-lg" target="_blank" rel="noopener" on:click={() => track('line_click', { location: 'contact_main' })}>{t.contact.btn1}</a>
+      <a href="mailto:contact@sustainablegreengold.com?subject=Aquaponics%20system%20enquiry" class="btn-outline" on:click={() => track('email_click', { location: 'contact_main' })}>{t.contact.btn3}</a>
       <a href="#aquaponics" class="btn-outline">{t.contact.btn2}</a>
     </div>
   </div>

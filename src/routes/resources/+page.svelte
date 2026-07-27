@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import Seo from "$lib/Seo.svelte";
 
   const LINE_URL = "https://line.me/ti/p/eZ2GG61uIe";
 
@@ -124,9 +125,13 @@
   };
 </script>
 
+<Seo
+  title="Archive — Aquaponics Documentation & Field Notes | Sustainable Green Gold AI"
+  description="System presentations, field notes, and reference material from our operational aquaponics farm in Chiang Rai, Thailand. Free to download."
+  path="/resources"
+/>
+
 <svelte:head>
-  <title>Archive — Sustainable Green Gold AI</title>
-  <meta name="description" content="Documentation, field notes, and reference material from our aquaponics farm in Chiang Rai." />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </svelte:head>
 
