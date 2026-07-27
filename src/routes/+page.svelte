@@ -42,15 +42,15 @@
     { label: t.nav.automation, href: "#automation" },
     { label: t.nav.species, href: "#species" },
     { label: t.nav.media, href: "#media" },
-    { label: t.nav.resources, href: "/resources" }, 
+    { label: t.nav.resources, href: "/resources" },
     { label: t.nav.growers, href: "#growers", grn: true },
   ];
 
   $: stats = [
     { value: 6,   suffix: "",  label: t.stats[0].label },
     { value: 12,  suffix: "+", label: t.stats[1].label },
-    { value: 100,  suffix: "%*", label: t.stats[2].label },
-    { value: 340, suffix: "%", label: t.stats[3].label },
+    { value: 100, suffix: "%*", label: t.stats[2].label },
+    { value: 0,   suffix: "",  label: t.stats[3].label },
   ];
 
   const cardIcons = ["⬡", "◈", "◉", "⬟", "◈", "⬡"];
@@ -90,8 +90,9 @@
             statsTriggered = true;
             document.querySelectorAll(".snum").forEach((el) => {
               const target = +el.dataset.target;
+              if (target <= 0) { el.textContent = target; return; }
               let n = 0;
-              const step = Math.ceil(target / 55);
+              const step = Math.max(1, Math.ceil(target / 55));
               const t = setInterval(() => {
                 n = Math.min(n + step, target);
                 el.textContent = n;
@@ -203,7 +204,7 @@
           <p>{s.label}</p>
         </div>
       {/each}
-</div>
+    </div>
     <p class="stats-note">* Excludes natural evaporation — atmospheric water recovery system in development</p>
   </div>
 </section>
@@ -420,10 +421,10 @@
     </div>
 
     <div class="media-cta" class:vis={visible["med"]}>
-<a href={lang === 'th' ? '/Smart_Polyponics_TH.pdf' : '/Smart_Polyponics_EN.pdf'} target="_blank" class="btn-view-presentation" on:click={() => track('presentation_view', { lang })}>
-  {t.med.btn}
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-</a>
+      <a href={lang === 'th' ? '/Smart_Polyponics_TH.pdf' : '/Smart_Polyponics_EN.pdf'} target="_blank" class="btn-view-presentation" on:click={() => track('presentation_view', { lang })}>
+        {t.med.btn}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -444,7 +445,7 @@
 <footer>
   <div class="container footer-grid">
     <div>
-<div class="footer-brand">SGG<span>·AI</span></div>
+      <div class="footer-brand">SGG<span>·AI</span></div>
       <p>Sustainable Green Gold AI</p>
       <div class="social-links">
         <a href="https://line.me/ti/p/carbonbasedlife" target="_blank" class="social-icon" title="Line" on:click={() => track('line_click', { location: 'footer' })}>
@@ -457,11 +458,11 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         </a>
         <a href="https://twl.ae/sustainablegreengold" target="_blank" class="social-icon" title="Tawasal">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" transform="translate(12 12) scale(1.3) translate(-12 -12)"><rect x="4.75" y="5.6" width="2.35" height="5.8" rx="0.55" transform="rotate(20 5.925 8.5)"/><rect x="8.05" y="5.6" width="2.35" height="5.8" rx="0.55" transform="rotate(20 9.225 8.5)"/><rect x="13.05" y="5.15" width="6.9" height="2.25" rx="0.55" transform="rotate(23 16.5 6.275)"/><rect x="13.05" y="8.85" width="6.9" height="2.25" rx="0.55" transform="rotate(23 16.5 9.975)"/><rect x="4.05" y="13.15" width="6.9" height="2.25" rx="0.55" transform="rotate(23 7.5 14.275)"/><rect x="4.05" y="16.85" width="6.9" height="2.25" rx="0.55" transform="rotate(23 7.5 17.975)"/><rect x="14" y="13.4" width="2.35" height="5.8" rx="0.55" transform="rotate(20 15.175 16.3)"/><rect x="17.3" y="13.4" width="2.35" height="5.8" rx="0.55" transform="rotate(20 18.475 16.3)"/></g></svg>
-</a>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" transform="translate(12 12) scale(1.3) translate(-12 -12)"><rect x="4.75" y="5.6" width="2.35" height="5.8" rx="0.55" transform="rotate(20 5.925 8.5)"/><rect x="8.05" y="5.6" width="2.35" height="5.8" rx="0.55" transform="rotate(20 9.225 8.5)"/><rect x="13.05" y="5.15" width="6.9" height="2.25" rx="0.55" transform="rotate(23 16.5 6.275)"/><rect x="13.05" y="8.85" width="6.9" height="2.25" rx="0.55" transform="rotate(23 16.5 9.975)"/><rect x="4.05" y="13.15" width="6.9" height="2.25" rx="0.55" transform="rotate(23 7.5 14.275)"/><rect x="4.05" y="16.85" width="6.9" height="2.25" rx="0.55" transform="rotate(23 7.5 17.975)"/><rect x="14" y="13.4" width="2.35" height="5.8" rx="0.55" transform="rotate(20 15.175 16.3)"/><rect x="17.3" y="13.4" width="2.35" height="5.8" rx="0.55" transform="rotate(20 18.475 16.3)"/></g></svg>
+        </a>
         <a href="https://www.tiktok.com/@digital.farm.cr" target="_blank" class="social-icon" title="TikTok">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.9 2.9 0 0 1-5.2 1.74 2.9 2.9 0 0 1 2.31-4.64c.3 0 .58.05.85.13V9.4a6.33 6.33 0 0 0-.85-.05A6.34 6.34 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/></svg>
-</a>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.9 2.9 0 0 1-5.2 1.74 2.9 2.9 0 0 1 2.31-4.64c.3 0 .58.05.85.13V9.4a6.33 6.33 0 0 0-.85-.05A6.34 6.34 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/></svg>
+        </a>
       </div>
     </div>
     <div class="footer-col">
@@ -475,7 +476,7 @@
     </div>
     <div class="footer-note">
       <p>{t.footer.rights}</p>
-        <p>{t.footer.location}</p>
+      <p>{t.footer.location}</p>
       <p>+666 527 8077</p>
     </div>
   </div>
@@ -516,7 +517,7 @@
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   .mobile-menu { position: absolute; top: 68px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #e5e7eb; display: flex; flex-direction: column; max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-  .mobile-menu.open { max-height: 440px; padding: 0.5rem 0; }
+  .mobile-menu.open { max-height: 480px; padding: 0.5rem 0; }
   .mobile-menu a { padding: 0.85rem 1.5rem; color: #374151; text-decoration: none; font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid #f3f4f6; display: block; transition: color 0.15s, background 0.15s; }
   .mobile-menu a:hover { color: #ff5c2a; background: #fff7f4; }
   .mobile-menu a.grn { color: #16a34a; font-weight: 700; }
@@ -580,7 +581,7 @@
   .stag.light { color: rgba(255,130,80,0.9); }
   h2 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; letter-spacing: -0.025em; color: #050d1e; line-height: 1.12; margin-bottom: 1rem; }
   h2.light { color: #f9fafb; }
-  h2 em { font-family: "Fraunces", serif; font-style: italic; font-weight: 300; color: #ff5c2a; }
+  h2 em { font-style: normal; font-weight: 800; color: #ff5c2a; }
   .sub { color: #6b7280; font-size: 1rem; line-height: 1.75; }
   .sub.light { color: rgba(255,255,255,0.55); }
   .sec-hdr { max-width: 680px; margin: 0 auto 3rem; text-align: center; opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -596,7 +597,7 @@
   /* ── INSTALLATIONS ── */
   #installations .sec-hdr { max-width: 780px; }
   #installations h2 { font-size: clamp(2.6rem, 5.5vw, 4.2rem); font-weight: 900; letter-spacing: -0.035em; line-height: 1.05; }
-  #installations h2 em { font-weight: 600; }
+  #installations h2 em { font-weight: 900; }
   #installations .sub { font-size: 1.35rem; color: #374151; font-weight: 500; line-height: 1.8; }
   .inst-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .inst-cards.vis { opacity: 1; transform: none; }
@@ -793,7 +794,7 @@
   /* ── MEDIA CTA ── */
   .media-cta { display: flex; justify-content: center; margin-top: 2.5rem; opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s; }
   .media-cta.vis { opacity: 1; transform: none; }
-  .btn-view-presentation { display: inline-flex; align-items: center; gap: 0.6rem; background: #630c7e; color: #fff; padding: 0.9rem 2rem; border-radius: 8px; font-size: 0.93rem; font-weight: 700; text-decoration: none; border: 2px solid transparent; transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(5,13,30,0.15); }
+  .btn-view-presentation { display: inline-flex; align-items: center; gap: 0.6rem; background: #050d1e; color: #fff; padding: 0.9rem 2rem; border-radius: 8px; font-size: 0.93rem; font-weight: 700; text-decoration: none; border: 2px solid transparent; transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(5,13,30,0.15); }
   .btn-view-presentation:hover { background: #111827; border-color: #ff5c2a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(5,13,30,0.2); }
   .btn-view-presentation svg { flex-shrink: 0; }
 
