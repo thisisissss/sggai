@@ -195,7 +195,7 @@
 
 <Seo
   title="Aquaponics Installations In Thailand — Sustainable Green Gold AI"
-  description="Turnkey aquaponics installations with live water-chemistry monitoring. Sunlight replaces the lighting bill, the biofilter replaces the fertilizer schedule. Operational farm in Chiang Rai."
+  description="Turnkey aquaponics installations with live water-chemistry monitoring — including outdoor aquaponic beds for licensed cannabis cultivation. Sunlight replaces the lighting bill, the biofilter replaces the fertilizer schedule. Operational farm in Chiang Rai."
   path="/install"
   canonicalPath="/"
 />

@@ -44,7 +44,7 @@
     { label: t.nav.species, href: "#species" },
     { label: t.nav.media, href: "#media" },
     { label: t.nav.resources, href: "/resources" },
-    { label: t.nav.growers, href: "#growers", grn: true },
+    // { label: t.nav.growers, href: "#growers", grn: true },
   ];
 
   $: stats = [
@@ -126,7 +126,7 @@
 
 <Seo
   title="Aquaponics Systems In Thailand — Sustainable Green Gold AI"
-  description="We design and install sensor-monitored aquaponics systems anywhere in Thailand. Fish feed the plants, the plants clean the water — zero fertilizer, a fraction of the water. Operational farm in Chiang Rai."
+  description="We design and install sensor-monitored aquaponics systems anywhere in Thailand — for vegetable farms and licensed cannabis growers alike. Fish feed the plants, the plants clean the water — zero fertilizer, a fraction of the water. Operational farm in Chiang Rai."
   path="/"
 />
 
@@ -336,7 +336,7 @@
 </section>
 
 <!-- GROWERS -->
-<section id="growers" class="section bg-grow" data-reveal="grow">
+<!-- <section id="growers" class="section bg-grow" data-reveal="grow">
   <div class="container">
     <div class="sec-hdr" class:vis={visible["grow"]}>
       <div class="stag">{t.grow.tag}</div>
@@ -393,7 +393,7 @@
       <a href="#contact" class="btn-grow" on:click={() => track('cta_click', { location: 'growers' })}>{t.grow.btn}</a>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- MEDIA -->
 <section id="media" class="section bg-light" data-reveal="med">
@@ -690,7 +690,7 @@
   .bento-txt p { font-size: 0.83rem; color: #4b5563; line-height: 1.7; }
 
   /* ── GROWERS ── */
-  .bg-grow { background: #f2f8f3; }
+  /* .bg-grow { background: #f2f8f3; }
   #growers .stag { color: #16a34a; }
   #growers h2 em { color: #16a34a; }
   #growers .cklist li::before { color: #16a34a; }
@@ -723,7 +723,7 @@
   .grow-gal .g-slot { aspect-ratio: 3/4; }
   .grow-note { color: #6b7280; font-size: 0.73rem; text-align: center; margin-top: 1.75rem; max-width: 640px; margin-left: auto; margin-right: auto; }
   .btn-grow { display: inline-block; text-decoration: none; background: #16a34a; color: #fff; padding: 0.9rem 2.1rem; border-radius: 8px; font-size: 0.93rem; font-weight: 700; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(22,163,74,0.3); }
-  .btn-grow:hover { background: #15803d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(22,163,74,0.35); }
+  .btn-grow:hover { background: #15803d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(22,163,74,0.35); } */
 
   /* ── GALLERY ── */
   .gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.5rem; opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -766,16 +766,16 @@
   .social-icon svg { width: 20px; height: 20px; }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 1024px) {
+ @media (max-width: 1024px) {
     .hero-inner { grid-template-columns: 1fr; }
     .hero-right { display: none; }
     .desktop-links { display: none; }
     .hamburger { display: flex; }
     .split { grid-template-columns: 1fr; gap: 2rem; }
     .img-float { display: none; }
-    .grow-split { grid-template-columns: 1fr; gap: 2rem; }
+    /* .grow-split { grid-template-columns: 1fr; gap: 2rem; }
     .grow-float { display: none; }
-    .grow-main { height: 380px; }
+    .grow-main { height: 380px; } */
   }
   @media (max-width: 768px) {
     .stats-grid { grid-template-columns: repeat(2,1fr); }
@@ -783,9 +783,9 @@
     .sp-row { grid-template-columns: 1fr; }
     .bento { grid-template-columns: 1fr; }
     .gallery { grid-template-columns: 1fr 1fr; }
-    .grow-stats { grid-template-columns: 1fr 1fr; }
+    /* .grow-stats { grid-template-columns: 1fr 1fr; }
     .grow-segs { grid-template-columns: 1fr; }
-    .grow-gal { grid-template-columns: 1fr 1fr; }
+    .grow-gal { grid-template-columns: 1fr 1fr; } */
     .vid-row { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .inst-cards { grid-template-columns: 1fr; }
@@ -793,8 +793,8 @@
   @media (max-width: 480px) {
     .cards-grid { grid-template-columns: 1fr; }
     .gallery { grid-template-columns: 1fr; }
-    .grow-stats { grid-template-columns: 1fr; }
-    .grow-gal { grid-template-columns: 1fr; }
+    /* .grow-stats { grid-template-columns: 1fr; }
+    .grow-gal { grid-template-columns: 1fr; } */
     .footer-grid { grid-template-columns: 1fr; }
     .inst-card { padding: 2rem 1.5rem; }
   }
