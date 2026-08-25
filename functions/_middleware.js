@@ -40,6 +40,11 @@ export async function onRequest(context) {
   const { request, next } = context;
   const url = new URL(request.url);
 
+  // Paths outside the experiment: no split, no redirect, no cookie.
+  if (url.pathname.startsWith('/noindex') || url.pathname.startsWith('/resources')) {
+    return next();
+  }
+
   // Bots: never split, never redirect, never set a cookie.
   if (isBot(request)) {
     return next();
