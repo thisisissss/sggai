@@ -5,8 +5,18 @@
 
   const R2 = "https://media.sustainablegreengold.com";
 
+  const MAP_EMBED = "https://maps.google.com/maps?q=19.9953781,99.8888617&z=16&output=embed";
+  const MAP_DIR = "https://www.google.com/maps/dir/?api=1&destination=19.9953781,99.8888617";
+
+  // Local map copy — move into $lib/i18n.js under footer if you prefer it there.
+  const mapCopy = {
+    en: { title: "Find the farm", directions: "Get directions" },
+    th: { title: "แผนที่ฟาร์ม", directions: "ดูเส้นทาง" },
+  };
+
   let lang = 'en';
   $: t = translations[lang];
+  $: mc = mapCopy[lang];
 
   function toggleLang() {
     lang = lang === 'en' ? 'th' : 'en';
@@ -486,6 +496,28 @@
       <p>{t.footer.rights}</p>
       <p>{t.footer.location}</p>
       <p>+666 527 8077</p>
+
+      <div class="foot-map">
+        <h5>{mc.title}</h5>
+        <div class="foot-map-frame">
+          <iframe
+            src={MAP_EMBED}
+            title="Sustainable Green Gold — Chiang Rai"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <a
+          class="foot-dir"
+          href={MAP_DIR}
+          target="_blank"
+          rel="noopener"
+          on:click={() => track('directions_click', { location: 'footer' })}
+        >
+          {mc.directions} →
+        </a>
+      </div>
     </div>
   </div>
 </footer>
@@ -765,6 +797,22 @@
   .social-icon:hover { color: #ff5c2a; }
   .social-icon svg { width: 20px; height: 20px; }
 
+  /* ── FOOTER MAP ── */
+  .foot-map { margin-top: 1.5rem; max-width: 340px; }
+  .foot-map h5 { color: rgba(255,255,255,0.28); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.6rem; font-weight: 700; }
+  .foot-map-frame { position: relative; aspect-ratio: 16 / 10; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+  .foot-map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    /* Fakes a dark map to sit against #050d1e. Delete this line to fall back
+       to Google's standard light map. */
+    filter: invert(92%) hue-rotate(180deg) contrast(0.86) saturate(0.75);
+  }
+  .foot-dir { display: inline-block; margin-top: 0.7rem; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.87rem; font-weight: 600; transition: color 0.2s; }
+  .foot-dir:hover { color: #ff5c2a; }
+
   /* ── RESPONSIVE ── */
  @media (max-width: 1024px) {
     .hero-inner { grid-template-columns: 1fr; }
@@ -797,6 +845,7 @@
     .grow-gal { grid-template-columns: 1fr; } */
     .footer-grid { grid-template-columns: 1fr; }
     .inst-card { padding: 2rem 1.5rem; }
+    .foot-map { max-width: none; }
   }
 
   /* ── MEDIA CTA ── */
