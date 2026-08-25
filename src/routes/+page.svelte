@@ -71,7 +71,7 @@
   $: speciesItems = t.sp.items.map((s, i) => ({ ...s, color: speciesColors[i] }));
 
   $: gallery = [
-    { src: `${R2}/plants/newgrowbedlines.HEIC`,     cap: t.med.gallery[0] },
+    { src: `${R2}/aquaponics/newgrowbedlines.jpg`, cap: t.med.gallery[0] },
     { src: `${R2}/aquaponics/tank2.jpg`,      cap: t.med.gallery[1] },
     { src: `${R2}/sensors/chip.jpeg`,         cap: t.med.gallery[2] },
     { src: `${R2}/plants/fig-fruit.jpg`,      cap: t.med.gallery[3] },
