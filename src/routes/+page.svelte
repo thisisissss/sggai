@@ -495,7 +495,7 @@
     <div class="footer-note">
       <p>{t.footer.rights}</p>
       <p>{t.footer.location}</p>
-      <p>+666 527 8077</p>
+      <p>065 227 8077</p>
 
       <div class="foot-map">
         <h5>{mc.title}</h5>

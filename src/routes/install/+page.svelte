@@ -621,7 +621,7 @@
     .hero { padding: 9rem 0 5rem; }
     .foot-map { text-align: center; }
   }
-  @media (max-width: 520px) {
+  @media (max-width: 520px) { 
     .cards { grid-template-columns: 1fr; gap: 2.5rem; }
     .btn-nav { display: none; }
     .btn-row { flex-direction: column; align-items: stretch; }
