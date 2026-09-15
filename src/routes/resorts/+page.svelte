@@ -2,6 +2,7 @@
   // src/routes/resorts/+page.svelte
   // Self-contained bilingual proposal page. Replace image URLs with your R2 assets.
   import { onMount } from 'svelte';
+  import './resorts.css';
 
   let lang = 'en';
   onMount(() => {
@@ -133,8 +134,8 @@
   };
 
   $: s = t[lang];
-  const EMAIL = 'contact@sustainablegreengold.com';
-  const LINE_ID = '@carbonbasedlife'; // replace
+  const EMAIL = 'sustainablegreengold@gmail.com';
+  const LINE_URL = 'https://line.me/ti/p/eZ2GG61uIe';
 </script>
 
 <svelte:head>
@@ -174,15 +175,9 @@
       <path d="M160 60 A105 105 0 0 1 251 218" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#arr)" />
       <path d="M232 240 A105 105 0 0 1 88 240" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#arr)" />
       <path d="M69 218 A105 105 0 0 1 160 60" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#arr)" />
-      <g class="node" transform="translate(160,40)">
-        <circle r="34" /><text y="5">{s.loop[0]}</text><text class="sub" y="52">{s.loopNote[0]}</text>
-      </g>
-      <g class="node" transform="translate(262,232)">
-        <circle r="34" /><text y="5">{s.loop[1]}</text><text class="sub" y="52">{s.loopNote[1]}</text>
-      </g>
-      <g class="node" transform="translate(58,232)">
-        <circle r="34" /><text y="5">{s.loop[2]}</text><text class="sub" y="52">{s.loopNote[2]}</text>
-      </g>
+      <g class="node" transform="translate(160,40)"><circle r="34" /><text y="5">{s.loop[0]}</text><text class="sub" y="52">{s.loopNote[0]}</text></g>
+      <g class="node" transform="translate(262,232)"><circle r="34" /><text y="5">{s.loop[1]}</text><text class="sub" y="52">{s.loopNote[1]}</text></g>
+      <g class="node" transform="translate(58,232)"><circle r="34" /><text y="5">{s.loop[2]}</text><text class="sub" y="52">{s.loopNote[2]}</text></g>
     </svg>
   </section>
 
@@ -246,119 +241,9 @@
     <p>{s.final}</p>
     <div class="contact">
       <a class="btn" href="mailto:{EMAIL}">{s.contact}: {EMAIL}</a>
-      <a class="btn ghost" href="https://line.me/R/ti/p/{LINE_ID}">{s.line}: {LINE_ID}</a>
+      <a class="btn ghost" href={LINE_URL}>{s.line}</a>
     </div>
   </section>
 
   <footer>{s.footer}</footer>
 </main>
-
-<style>
-  :global(body) { margin: 0; }
-  .page {
-    --ink: #17231D;
-    --green: #1F4D3A;
-    --mist: #E9EFE9;
-    --gold: #A67C2E;
-    --white: #FFFFFF;
-    font-family: 'Manrope', system-ui, sans-serif;
-    color: var(--ink);
-    background: var(--white);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
-  .page.th { font-family: 'Manrope', 'Noto Sans Thai', 'Sarabun', system-ui, sans-serif; line-height: 1.7; }
-
-  .page > section, .page > header, .page > footer {
-    max-width: 1040px; margin: 0 auto; padding: 0 24px;
-  }
-  h1, h2, h3 { font-weight: 700; letter-spacing: -0.01em; margin: 0; }
-  h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.05; }
-  h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 20px; color: var(--green); }
-  h3 { font-size: 1.1rem; }
-  p { margin: 0 0 12px; max-width: 62ch; }
-
-  .top { display: flex; justify-content: space-between; align-items: center; padding-top: 22px; padding-bottom: 22px; }
-  .brand { font-weight: 800; color: var(--green); text-decoration: none; font-size: 1.2rem; letter-spacing: 0.04em; }
-  .lang button {
-    background: none; border: 1px solid var(--mist); color: var(--ink); padding: 6px 12px;
-    font: inherit; font-weight: 600; cursor: pointer; border-radius: 6px;
-  }
-  .lang button + button { margin-left: 6px; }
-  .lang button.on { background: var(--green); color: var(--white); border-color: var(--green); }
-  .lang button:focus-visible, .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-
-  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding-top: 32px; padding-bottom: 64px; }
-  .lede { font-size: 1.2rem; margin: 20px 0 28px; }
-  .hero-img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; background: var(--mist); }
-
-  .btn {
-    display: inline-block; background: var(--green); color: var(--white); text-decoration: none;
-    padding: 14px 22px; border-radius: 8px; font-weight: 700;
-  }
-  .btn.ghost { background: transparent; color: var(--green); border: 2px solid var(--green); }
-
-  .loop {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
-    background: var(--green); color: var(--white); border-radius: 14px;
-    padding: 48px 40px !important; margin-bottom: 72px;
-  }
-  .loop h2 { color: var(--white); }
-  .loop-svg { width: 100%; max-width: 360px; justify-self: center; color: var(--white); }
-  .loop-svg .node circle { fill: var(--white); }
-  .loop-svg .node text { text-anchor: middle; fill: var(--green); font-weight: 700; font-size: 15px; font-family: inherit; }
-  .loop-svg .node text.sub { fill: var(--white); font-weight: 500; font-size: 11.5px; }
-
-  .why { padding-bottom: 72px; }
-  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; margin-bottom: 40px; }
-  .why-item h3 { margin-bottom: 6px; }
-  .strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .strip img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; background: var(--mist); }
-
-  .tiers { padding-bottom: 72px; }
-  .tier-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .tier { background: var(--mist); border-radius: 12px; padding: 28px; }
-  .tier:nth-child(2) { border: 2px solid var(--gold); }
-  .price { font-size: 2.2rem; font-weight: 800; color: var(--green); margin: 8px 0 16px; letter-spacing: -0.02em; }
-  .tier dl { margin: 0; }
-  .tier dd { margin: 0 0 8px; }
-  .tier dd.for { color: #4B5A52; }
-  .included { margin-top: 20px; color: #4B5A52; max-width: 70ch; }
-  .sub-h { font-size: 1.3rem; margin-top: 44px; }
-  .addons { width: 100%; border-collapse: collapse; }
-  .addons th, .addons td { text-align: left; padding: 14px 12px 14px 0; border-top: 1px solid var(--mist); vertical-align: top; }
-  .addons th { font-weight: 700; width: 28%; }
-  .addons td.num { white-space: nowrap; font-weight: 700; color: var(--green); text-align: right; padding-right: 0; }
-
-  .time { padding-bottom: 72px; }
-  .time ol { list-style: none; padding: 0; margin: 0; counter-reset: step; }
-  .time li {
-    display: grid; grid-template-columns: 48px 200px 1fr; gap: 16px; padding: 16px 0;
-    border-top: 1px solid var(--mist); counter-increment: step;
-  }
-  .time li::before { content: counter(step); font-weight: 800; color: var(--gold); font-size: 1.3rem; }
-  .time li:last-child { border-bottom: 1px solid var(--mist); }
-
-  .about { padding-bottom: 72px; }
-  .about p { max-width: 70ch; }
-
-  .final { background: var(--mist); border-radius: 14px; padding: 48px 40px !important; margin-bottom: 40px; }
-  .contact { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
-
-  footer { padding-top: 24px; padding-bottom: 40px; font-size: 0.85rem; color: #4B5A52; }
-
-  @media (max-width: 760px) {
-    .hero, .loop, .why-grid, .tier-row { grid-template-columns: 1fr; }
-    .hero { gap: 24px; padding-bottom: 48px; }
-    .hero-img { aspect-ratio: 4 / 3; order: -1; }
-    .loop { padding: 32px 24px !important; }
-    .strip { grid-template-columns: 1fr 1fr; }
-    .time li { grid-template-columns: 36px 1fr; }
-    .time li span { grid-column: 2; }
-    .addons th { width: 40%; }
-    .addons td.num { text-align: left; }
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .lang button, .btn { transition: background-color .15s ease; }
-  }
-</style>
