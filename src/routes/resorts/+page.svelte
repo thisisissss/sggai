@@ -74,6 +74,7 @@
       final: 'Visit our farm in Chiang Rai, or send us a photo of your site and we will tell you what fits.',
       contact: 'Email',
       line: 'LINE',
+      contactBtn: 'Contact Us',
       footer: 'Sustainable Green Gold Co., Ltd. · 207 Moo 4, Nang Lae, Mueang Chiang Rai, Chiang Rai 57100'
     },
     th: {
@@ -129,6 +130,7 @@
       final: 'แวะชมฟาร์มของเราที่เชียงราย หรือส่งรูปพื้นที่ของคุณมา เราจะบอกได้ว่าแบบไหนเหมาะ',
       contact: 'อีเมล',
       line: 'LINE',
+      contactBtn: 'ติดต่อเรา',
       footer: 'บริษัท ซัสเทนเนเบิ้ล กรีน โกลด์ จำกัด · 207 หมู่ 4 ต.นางแล อ.เมืองเชียงราย จ.เชียงราย 57100'
     }
   };
@@ -145,11 +147,16 @@
 
 <main class="page" class:th={lang === 'th'}>
   <header class="top">
-    <a class="brand" href="/">SGG</a>
-    <div class="lang" role="group" aria-label="Language">
-      <button class:on={lang === 'en'} on:click={() => setLang('en')}>EN</button>
-      <button class:on={lang === 'th'} on:click={() => setLang('th')}>ไทย</button>
+   <div class="top-inner">
+    <a class="brand" href="/">SGG·AI</a>
+    <nav class="nav">
+      <a href="/#ecosystem">Ecosystem</a><a href="/#automation">Automation</a><a href="/#species">Species</a><a href="/#media">Media</a><a href="/#resources">Resources</a>
+    </nav>
+    <div class="right">
+      <button class="pill" on:click={() => setLang(lang === 'en' ? 'th' : 'en')}>{lang === 'en' ? '🇹🇭 ภาษาไทย' : '🇬🇧 English'}</button>
+      <a class="pill solid" href="#contact">{s.contactBtn}</a>
     </div>
+   </div>
   </header>
 
   <section class="hero">
@@ -236,7 +243,7 @@
     <p>{s.about}</p>
   </section>
 
-  <section class="final">
+  <section class="final" id="contact">
     <h2>{s.finalHead}</h2>
     <p>{s.final}</p>
     <div class="contact">

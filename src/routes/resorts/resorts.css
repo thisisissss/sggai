@@ -22,15 +22,23 @@ h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 20px; color: var(--gree
 h3 { font-size: 1.1rem; }
 p { margin: 0 0 12px; max-width: 62ch; }
 
-.top { display: flex; justify-content: space-between; align-items: center; padding-top: 22px; padding-bottom: 22px; }
-.brand { font-weight: 800; color: var(--green); text-decoration: none; font-size: 1.2rem; letter-spacing: 0.04em; }
-.lang button {
-  background: none; border: 1px solid var(--mist); color: var(--ink); padding: 6px 12px;
-  font: inherit; font-weight: 600; cursor: pointer; border-radius: 6px;
+.top {
+  max-width: none !important; margin: 0 0 32px !important; padding: 0 !important;
+  background: linear-gradient(90deg, #4C7FDC 0%, #7A3FA8 60%, #8A3CA9 100%);
+  border-bottom: 1px solid rgba(255,255,255,.35);
 }
-.lang button + button { margin-left: 6px; }
-.lang button.on { background: var(--green); color: var(--white); border-color: var(--green); }
-.lang button:focus-visible, .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.top-inner { max-width: 1240px; margin: 0 auto; padding: 22px 32px; display: flex; align-items: center; gap: 32px; }
+.brand { font-weight: 800; color: var(--white); text-decoration: none; font-size: 1.35rem; letter-spacing: 0.02em; }
+.nav { display: flex; gap: 32px; margin: 0 auto; }
+.nav a { color: rgba(255,255,255,.92); text-decoration: none; font-weight: 500; font-size: 1.05rem; }
+.nav a:hover { color: var(--white); }
+.right { display: flex; gap: 12px; align-items: center; }
+.pill {
+  border: 1.5px solid rgba(255,255,255,.55); background: rgba(255,255,255,.12); color: var(--white);
+  padding: 10px 18px; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none;
+}
+.pill.solid { background: rgba(255,255,255,.22); font-weight: 700; padding: 12px 22px; }
+.pill:focus-visible, .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 
 .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding-top: 32px; padding-bottom: 64px; }
 .lede { font-size: 1.2rem; margin: 20px 0 28px; }
@@ -88,6 +96,7 @@ p { margin: 0 0 12px; max-width: 62ch; }
 
 footer { padding-top: 24px; padding-bottom: 40px; font-size: 0.85rem; color: #4B5A52; }
 
+@media (max-width: 900px) { .nav { display: none; } .top-inner { padding: 16px 20px; justify-content: space-between; } }
 @media (max-width: 760px) {
   .hero, .why-grid, .tier-row, .loop { grid-template-columns: 1fr; }
   .hero { gap: 24px; padding-bottom: 48px; }

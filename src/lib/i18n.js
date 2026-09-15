@@ -7,6 +7,7 @@ export const translations = {
       media: "Media",
       resources: "Resources",
       growers: "For Weed Growers",
+      resorts: "For Resorts",
       contact: "Contact Us",
     },
     hero: {
@@ -205,6 +206,7 @@ export const translations = {
       media: "สื่อ",
       resources: "แหล่งข้อมูล",
       growers: "สำหรับผู้ปลูกกัญชา",
+      resorts: "สำหรับรีสอร์ท",
       contact: "ติดต่อเรา",
     },
     hero: {

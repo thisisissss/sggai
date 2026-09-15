@@ -153,7 +153,7 @@
       <button class="lang-toggle" on:click={toggleLang}>
         {lang === 'en' ? '🇹🇭 ภาษาไทย' : '🇬🇧 English'}
       </button>
-      <a href="#contact" class="btn-nav" on:click={() => track('cta_click', { location: 'nav' })}>{t.nav.contact}</a>
+      <a href="/resorts" class="btn-nav" on:click={() => track('cta_click', { location: 'nav_resorts' })}>{t.nav.resorts}</a>
       <button class="hamburger" class:open={menuOpen} on:click={toggleMenu} aria-label="Toggle menu">
         <span /><span /><span />
       </button>
@@ -161,7 +161,7 @@
   </nav>
   <div class="mobile-menu" class:open={menuOpen}>
     {#each navLinks as l}<a href={l.href} class:grn={l.grn} on:click={closeMenu}>{l.label}</a>{/each}
-    <a href="#contact" class="m-cta" on:click={() => { closeMenu(); track('cta_click', { location: 'mobile_nav' }); }}>{t.nav.contact} →</a>
+    <a href="/resorts" class="m-cta" on:click={() => { closeMenu(); track('cta_click', { location: 'mobile_nav_resorts' }); }}>{t.nav.resorts} →</a>
   </div>
 </header>
 
