@@ -150,7 +150,7 @@
    <div class="top-inner">
     <a class="brand" href="/">SGG·AI</a>
     <nav class="nav">
-      <a href="/#ecosystem">Ecosystem</a><a href="/#automation">Automation</a><a href="/#species">Species</a><a href="/#media">Media</a><a href="/#resources">Resources</a>
+      <a href="/">Ecosystem</a><a href="/">Automation</a><a href="/">Species</a><a href="/">Media</a><a href="/">Resources</a>
     </nav>
     <div class="right">
       <button class="pill" on:click={() => setLang(lang === 'en' ? 'th' : 'en')}>{lang === 'en' ? '🇹🇭 ภาษาไทย' : '🇬🇧 English'}</button>
