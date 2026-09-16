@@ -42,14 +42,14 @@
           name: 'Kitchen garden',
           price: '฿180,000',
           size: '2 fish tanks, 4 grow beds, ~5 m²',
-          yield: 'About 8–12 kg of greens and herbs per week',
+          yield: 'Daily herbs and greens for a small kitchen',
           for: 'Boutique resorts and villas, 10–40 keys'
         },
         {
           name: 'Resort farm',
           price: '฿420,000',
           size: '4 fish tanks, 12 grow beds, ~15 m²',
-          yield: 'About 25–35 kg per week plus 100+ fish per cycle',
+          yield: 'Daily produce for a full restaurant kitchen, plus fish for the menu',
           for: 'Resorts with 40+ keys or a signature restaurant'
         }
       ],
@@ -57,8 +57,7 @@
       addHead: 'Add-ons',
       addons: [
         ['Monitoring dashboard', 'pH, oxygen, temperature and water level on your phone, with alerts.', '฿35,000'],
-        ['Quarterly care visit', 'Fish health, siphon and pump service, replanting plan.', '฿4,500 / visit'],
-        ['Polycarbonate greenhouse', 'Instead of shade net. Rain and pest protection, longer plant life.', 'from ฿60,000']
+        ['Quarterly care visit', 'Fish health, siphon and pump service, replanting plan.', '฿4,500 / visit']
       ],
       timeHead: 'From first call to first harvest',
       timeline: [
@@ -98,14 +97,14 @@
           name: 'สวนครัว',
           price: '180,000 บาท',
           size: 'ถังปลา 2 ถัง แปลงปลูก 4 แปลง ประมาณ 5 ตร.ม.',
-          yield: 'ผักและสมุนไพรประมาณ 8–12 กก. ต่อสัปดาห์',
+          yield: 'สมุนไพรและผักสดทุกวันสำหรับครัวขนาดเล็ก',
           for: 'บูติกรีสอร์ทและวิลล่า 10–40 ห้อง'
         },
         {
           name: 'ฟาร์มรีสอร์ท',
           price: '420,000 บาท',
           size: 'ถังปลา 4 ถัง แปลงปลูก 12 แปลง ประมาณ 15 ตร.ม.',
-          yield: 'ประมาณ 25–35 กก. ต่อสัปดาห์ และปลากว่า 100 ตัวต่อรอบ',
+          yield: 'ผลผลิตทุกวันสำหรับครัวร้านอาหารเต็มรูปแบบ พร้อมปลาสำหรับเมนู',
           for: 'รีสอร์ท 40 ห้องขึ้นไป หรือมีร้านอาหารซิกเนเจอร์'
         }
       ],
@@ -113,8 +112,7 @@
       addHead: 'บริการเสริม',
       addons: [
         ['แดชบอร์ดตรวจสอบ', 'ค่า pH ออกซิเจน อุณหภูมิ และระดับน้ำบนมือถือ พร้อมแจ้งเตือน', '35,000 บาท'],
-        ['เข้าดูแลรายไตรมาส', 'ตรวจสุขภาพปลา ซ่อมบำรุงกาลักน้ำและปั๊ม วางแผนปลูกรอบใหม่', '4,500 บาท / ครั้ง'],
-        ['โรงเรือนโพลีคาร์บอเนต', 'แทนตาข่ายพรางแสง กันฝนและแมลง ยืดอายุพืช', 'เริ่ม 60,000 บาท']
+        ['เข้าดูแลรายไตรมาส', 'ตรวจสุขภาพปลา ซ่อมบำรุงกาลักน้ำและปั๊ม วางแผนปลูกรอบใหม่', '4,500 บาท / ครั้ง']
       ],
       timeHead: 'จากการติดต่อครั้งแรกถึงการเก็บเกี่ยวครั้งแรก',
       timeline: [
